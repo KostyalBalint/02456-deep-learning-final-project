@@ -4,4 +4,7 @@
     <option name="sdkName" value="uv (open-response-mvp)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="/opt/homebrew/Caskroom/miniconda/base/envs/deep-learning-final-project" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
 </project>
