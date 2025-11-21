@@ -1,6 +1,4 @@
-"""
-Segmentation utilities for converting anomaly heatmaps to binary masks.
-"""
+
 import numpy as np
 import cv2
 from scipy.ndimage import gaussian_filter
@@ -9,23 +7,7 @@ from sklearn.metrics import precision_recall_curve, f1_score
 
 def anomaly_map_to_binary_mask(anomaly_map, threshold=None, method='otsu',
                                 smooth_sigma=4, min_area=None, resize_to=None):
-    """
-    Convert anomaly heatmap to binary segmentation mask.
 
-    Args:
-        anomaly_map: 2D anomaly heatmap (grid_h, grid_w) or already upsampled
-        threshold: Fixed threshold value (if None, will be computed automatically)
-        method: Thresholding method if threshold is None:
-                - 'otsu': Otsu's method (good for bimodal distributions)
-                - 'percentile': Use percentile (default 95th percentile)
-                - 'adaptive': Adaptive thresholding
-        smooth_sigma: Gaussian smoothing sigma before thresholding
-        min_area: Minimum connected component area (remove small regions)
-        resize_to: Tuple (H, W) to resize final mask to match original image
-
-    Returns:
-        binary_mask: Binary mask (0 = normal, 255 = anomaly)
-    """
     # Apply Gaussian smoothing
     if smooth_sigma > 0:
         anomaly_map_smooth = gaussian_filter(anomaly_map, sigma=smooth_sigma)
@@ -72,19 +54,6 @@ def anomaly_map_to_binary_mask(anomaly_map, threshold=None, method='otsu',
 
 
 def find_optimal_threshold(anomaly_maps, ground_truth_masks, metric='f1'):
-    """
-    Find optimal threshold for converting anomaly maps to binary masks.
-    Uses ground truth to maximize a given metric.
-
-    Args:
-        anomaly_maps: List of anomaly maps (2D arrays)
-        ground_truth_masks: List of ground truth binary masks
-        metric: Metric to optimize ('f1', 'precision', 'recall', 'iou')
-
-    Returns:
-        optimal_threshold: Best threshold value
-        best_metric_value: Metric value at optimal threshold
-    """
     # Flatten all maps and masks
     all_scores = []
     all_labels = []
@@ -132,17 +101,7 @@ def find_optimal_threshold(anomaly_maps, ground_truth_masks, metric='f1'):
 
 
 def post_process_mask(binary_mask, morph_kernel_size=5, morph_iterations=2):
-    """
-    Post-process binary mask with morphological operations.
 
-    Args:
-        binary_mask: Binary mask (0/255)
-        morph_kernel_size: Size of morphological kernel
-        morph_iterations: Number of iterations
-
-    Returns:
-        processed_mask: Post-processed binary mask
-    """
     kernel = np.ones((morph_kernel_size, morph_kernel_size), np.uint8)
 
     # Close small holes

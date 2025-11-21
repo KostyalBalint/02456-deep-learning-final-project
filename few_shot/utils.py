@@ -5,9 +5,7 @@ from scipy.ndimage import gaussian_filter
 
 
 def augment_image(img_ref, augmentation = "rotate", angles = [0, 45, 90, 135, 180, 225, 270, 315]):
-    """
-    Simply augmentation of images, currently just rotation.
-    """
+
     imgs = []
     if augmentation == "rotate":
         for angle in angles:
