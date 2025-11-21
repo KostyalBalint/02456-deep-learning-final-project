@@ -210,3 +210,5 @@ data
 .DS_STORE
 # The dataset that should be downloaded from source
 mvtec_anomaly_detection
+evaluation_results
+output_visualizations

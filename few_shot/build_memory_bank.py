@@ -9,9 +9,6 @@ def build_memory_bank(model, reference_images, use_rotation=True,
     """
     Build memory bank from reference images using sklearn NearestNeighbors.
 
-    IMPORTANT: Following AnomalyDINO, masking should be False for memory bank!
-    Masking is only applied during test-time detection, not during memory bank construction.
-
     Args:
         model: DINOv3Wrapper instance
         reference_images: List of images (numpy arrays or PIL Images)
@@ -45,7 +42,6 @@ def build_memory_bank(model, reference_images, use_rotation=True,
 
     # Concatenate all reference features
     features_ref = np.concatenate(features_ref, axis=0).astype('float32')
-    print(f"Total patches in memory bank: {features_ref.shape[0]}")
 
     # Normalize features for cosine distance
     if normalize_features:
