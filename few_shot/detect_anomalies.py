@@ -3,22 +3,7 @@ import numpy as np
 
 def detect_anomalies(model, nn_index, test_image, use_masking=True,
                      k_neighbors=1, normalize_features=True):
-    """
-    Detect anomalies in a test image using memory bank (sklearn version).
 
-    Args:
-        model: DINOv3Wrapper instance
-        nn_index: sklearn NearestNeighbors model (memory bank)
-        test_image: Test image (numpy array or PIL Image)
-        use_masking: Whether to apply PCA-based masking
-        k_neighbors: Number of nearest neighbors to consider
-        normalize_features: Whether to L2-normalize features
-
-    Returns:
-        image_score: Image-level anomaly score
-        anomaly_map: Patch-level anomaly map (grid_h, grid_w)
-        patch_scores: Raw patch-level scores (num_patches,)
-    """
     # Extract features from test image
     image_tensor, grid_size = model.prepare_image(test_image)
     features = model.extract_features(image_tensor)

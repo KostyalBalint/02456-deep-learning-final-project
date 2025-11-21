@@ -3,16 +3,6 @@ import numpy as np
 from PIL import Image
 
 def augment_image_with_rotations(image):
-    """
-    Augment image with 8-way rotations.
-    Based on AnomalyDINO's augmentation strategy.
-
-    Args:
-        image: PIL Image or numpy array (H, W, C)
-
-    Returns:
-        List of 8 augmented images (rotations at 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°)
-    """
     # Convert to numpy if PIL
     if isinstance(image, Image.Image):
         image_np = np.array(image)

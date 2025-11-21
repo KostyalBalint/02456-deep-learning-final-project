@@ -8,20 +8,11 @@ from transformers import AutoImageProcessor, AutoModel
 
 
 class DINOv3Wrapper:
-    """Wrapper for DINOv3 model for anomaly detection with patch-level features."""
+
 
     def __init__(self, model_name="facebook/dinov3-vits16-pretrain-lvd1689m",
                  device=None, smaller_edge_size=518):
-        """
-        Initialize DINOv3 wrapper.
 
-        Args:
-            model_name: HuggingFace model identifier
-            device: Device to run model on (auto-detect if None)
-            smaller_edge_size: Target size for the smaller edge (increases patch resolution)
-                             Default 518 gives ~32x32 grid for vits16
-                             Use 640 for ~40x40 grid (matches AnomalyDINO paper)
-        """
         self.model_name = model_name
         self.smaller_edge_size = smaller_edge_size
 
@@ -53,17 +44,7 @@ class DINOv3Wrapper:
         print(f"Smaller edge size: {self.smaller_edge_size}")
 
     def prepare_image(self, image):
-        """
-        Prepare image for feature extraction using AnomalyDINO's resizing strategy.
-        Resizes by smaller edge and crops to multiples of patch size.
 
-        Args:
-            image: PIL Image or numpy array (H, W, C)
-
-        Returns:
-            image_tensor: Processed image tensor
-            grid_size: Tuple of (grid_h, grid_w)
-        """
         # Convert numpy to PIL if needed
         if isinstance(image, np.ndarray):
             image = Image.fromarray(image.astype(np.uint8))
@@ -97,15 +78,6 @@ class DINOv3Wrapper:
         return image_tensor, grid_size
 
     def extract_features(self, image_tensor):
-        """
-        Extract patch-level features from image tensor.
-
-        Args:
-            image_tensor: Preprocessed image tensor
-
-        Returns:
-            features: Numpy array of patch features (num_patches, hidden_dim)
-        """
         with torch.inference_mode():
             outputs = self.model(pixel_values=image_tensor)
             last_hidden = outputs.last_hidden_state  # (batch, num_tokens, hidden_dim)
@@ -128,27 +100,7 @@ class DINOv3Wrapper:
     def compute_background_mask(self, img_features, grid_size, threshold_percentile=70,
                                  masking_type=False, kernel_size=3, border=0.2,
                                  smoothing_sigma=4, n_components=1, aggregation='first'):
-        """
-        PCA-based foreground segmentation using percentile thresholding.
 
-        Args:
-            img_features: Patch features (num_patches, hidden_dim)
-            grid_size: Tuple of (grid_h, grid_w)
-            threshold_percentile: Percentile for thresholding (default 70 = keep top 30%)
-            masking_type: Boolean, whether to apply masking
-            kernel_size: Size of kernel for morphological operations (should be odd)
-            border: Fraction of border region to check for adaptive flipping
-            smoothing_sigma: Gaussian smoothing sigma for the PCA map
-            n_components: Number of PCA components to use (default 1)
-            aggregation: How to combine multiple components:
-                        'first' - use only first component (default, AnomalyDINO approach)
-                        'l2' - L2 norm across components
-                        'mean' - Mean across components
-                        'max' - Max across components
-
-        Returns:
-            mask: Boolean mask
-        """
         if not masking_type:
             return np.ones(img_features.shape[0], dtype=bool)
 

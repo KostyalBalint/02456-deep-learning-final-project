@@ -6,20 +6,7 @@ from few_shot.augment_image_with_rotations import augment_image_with_rotations
 
 def build_memory_bank(model, reference_images, use_rotation=True,
                        normalize_features=True):
-    """
-    Build memory bank from reference images using sklearn NearestNeighbors.
 
-    Args:
-        model: DINOv3Wrapper instance
-        reference_images: List of images (numpy arrays or PIL Images)
-        use_rotation: Whether to apply 8-way rotation augmentation
-        normalize_features: Whether to L2-normalize features for cosine distance
-
-    Returns:
-        nn_index: sklearn NearestNeighbors model
-        features_ref: Reference features array
-        num_features: Total number of patch features in memory bank
-    """
     features_ref = []
 
     print(f"Building memory bank from {len(reference_images)} images...")
