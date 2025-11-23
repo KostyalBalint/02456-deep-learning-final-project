@@ -8,6 +8,7 @@ from few_shot.detect_anomalies import detect_anomalies
 from .metrics import compute_auroc, compute_pro, compute_pixel_level_metrics, compute_iou
 from .results import MethodResults, ExperimentResults
 
+from zero_shot.detect_anomalies import detect_anomalies as zero_shot_detect_anomalies
 
 def run_few_shot(
     model,
@@ -49,6 +50,21 @@ def run_few_shot(
         image_scores.append(score)
         anomaly_maps.append(anomaly_map)
 
+    return compute_results(
+        method_name=method_name,
+        object_name=object_name,
+        image_scores=image_scores,
+        anomaly_maps=anomaly_maps,
+        test_labels=test_labels,
+        test_masks=test_masks,
+        num_features=num_features,
+        use_rotation=use_rotation,
+        use_masking=use_masking,
+        k_neighbors=k_neighbors
+    )
+
+
+def compute_results(method_name, object_name, image_scores, anomaly_maps, test_labels, test_masks, num_features, **kwargs):
     image_scores = np.array(image_scores)
 
     # Compute image-level metrics
@@ -88,29 +104,57 @@ def run_few_shot(
             'pixel_f1': pixel_f1,
             'mean_iou': mean_iou
         },
-        config={
-            'k_shot': k_shot,
-            'use_rotation': use_rotation,
-            'use_masking': use_masking,
-            'k_neighbors': k_neighbors
-        },
+        config=kwargs,
         num_features=num_features
     )
 
 
 def run_zero_shot(
     model,
-    reference_images: List[np.ndarray],
     test_images: List[np.ndarray],
     test_labels: np.ndarray,
     test_masks: List[np.ndarray],
     object_name: str,
+    use_masking: bool = False,
     **kwargs
 ) -> MethodResults:
-    raise NotImplementedError(
-        "Zero-shot evaluation is not yet implemented. "
-        "This is a placeholder for future development. "
-        "Use run_few_shot() with k >= 1 for now."
+    
+    method_name = "zero_shot"
+
+    print(f"Running {method_name} evaluation on {object_name}...")
+    
+    # Detect anomalies in test images
+    image_scores = []
+    anomaly_maps = []
+    # Reference images are not used in zero-shot
+    for idx, test_img in enumerate(tqdm(test_images, desc=f"Detecting anomalies ({object_name})")):
+        reference_images = test_images[:idx] + test_images[idx+1:]
+        nn_index, features_ref, num_features = build_memory_bank(
+            model=model,
+            reference_images=reference_images,
+            use_rotation=False,
+            normalize_features=True
+        )
+        score, anomaly_map, patch_scores = zero_shot_detect_anomalies(
+            model=model,
+            nn_index=nn_index,
+            test_image=test_img,
+            use_masking=use_masking,
+            normalize_features=True
+        )
+        image_scores.append(score)
+        anomaly_maps.append(anomaly_map)
+
+    return compute_results(
+        method_name=method_name,
+        object_name=object_name,
+        image_scores=image_scores,
+        anomaly_maps=anomaly_maps,
+        test_labels=test_labels,
+        test_masks=test_masks,
+        num_features=num_features,
+        use_masking=use_masking,
+        **kwargs
     )
 
 
