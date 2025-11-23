@@ -1,0 +1,37 @@
+bg_removal:
+  bottle: false
+  cable: false
+  capsule: false
+  carpet: true
+  grid: false
+  hazelnut: true
+  leather: false
+  metal_nut: false
+  pill: true
+  screw: true
+  tile: false
+  toothbrush: true
+  transistor: false
+  wood: false
+  zipper: false
+
+rotation:
+  bottle: false
+  cable: false
+  capsule: false
+  carpet: false
+  grid: false
+  hazelnut: false
+  leather: false
+  metal_nut: false
+  pill: false
+  screw: false
+  tile: false
+  toothbrush: false
+  transistor: false
+  wood: false
+  zipper: false
+
+root_dir: .
+model_size: s16
+test: pill
