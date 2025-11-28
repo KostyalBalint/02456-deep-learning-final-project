@@ -102,7 +102,7 @@ def ensure_mvtech_dataset_is_downloaded(root_dir='.', force_download=False):
     Returns:
         str: Path to the extracted dataset directory (mvtec_anomaly_detection)
     """
-    dataset_url = "https://www.mydrive.ch/shares/38536/3830184030e49fe74747669442f0f282/download/420938113-1629952094/mvtec_anomaly_detection.tar.xz"
+    dataset_url = "https://www.mydrive.ch/shares/38536/3830184030e49fe74747669442f0f283/download/420938113-1629960298/mvtec_anomaly_detection.tar.xz"
 
     root_dir = os.path.expanduser(root_dir)
     archive_path = os.path.join(root_dir, "mvtec_anomaly_detection.tar.xz")
@@ -134,7 +134,7 @@ def ensure_mvtech_dataset_is_downloaded(root_dir='.', force_download=False):
     print(f"Extracting archive to {root_dir}...")
     try:
         with tarfile.open(archive_path, 'r:xz') as tar:
-            tar.extractall(path=root_dir)
+            tar.extractall(path=extract_dir)
         print("Extraction complete!")
     except Exception as e:
         print(f"Error extracting archive: {e}")
