@@ -156,3 +156,207 @@ def get_categories(dataset_dir="."):
         for name in os.listdir(dataset_dir)
         if os.path.isdir(os.path.join(dataset_dir, name))
     ]
+    
+def sample_mvtec_images(
+    dataset_path,
+    categories=None,
+    split="test",
+    num_per_category=None,
+    label_filter="all",
+    include_masks=True,
+    shuffle=True,
+    seed=None,
+):
+    """
+    Sample images from one or multiple MVTec categories.
+
+    Args:
+        dataset_path (str):
+            Path to MVTec dataset root (directory that directly contains categories).
+        categories (list[str] or None):
+            List of category names to sample from (e.g. ['bottle', 'capsule']).
+            If None or empty, all categories in dataset_path will be used.
+        split (str):
+            'train' or 'test'.
+            - 'train' only has normal ('good') images.
+            - 'test' has 'good' + defect types.
+        num_per_category (int or None):
+            Maximum number of images to draw per category (after filtering by label).
+            If None, use all available images from each category.
+        label_filter (str):
+            One of:
+                'all'        → use both normal and anomalous (if present)
+                'normal'     → only normal ('good')
+                'anomalous'  → only anomalous (non-'good')
+        include_masks (bool):
+            If True and split == 'test', return anomaly masks for anomalous images.
+            For normal images, masks will be all zeros.
+            For split == 'train', masks will be all zeros (no ground truth masks).
+        shuffle (bool):
+            If True, shuffle images within each category before sampling.
+        seed (int or None):
+            Random seed for reproducible shuffling.
+
+    Returns:
+        images (list[np.ndarray]):  List of HxWx3 RGB images.
+        labels (list[int]):         0 = normal, 1 = anomalous.
+        masks (list[np.ndarray] or None):
+                                   If include_masks is True, list of HxW uint8 masks
+                                   (0/1). Otherwise None.
+        image_categories (list[str]):
+                                   Category name for each image (same length as images).
+        filenames (list[str]):     Original filename for each image.
+    """
+    import os
+    import cv2
+    import numpy as np
+    import random
+
+    if seed is not None:
+        random.seed(seed)
+
+    # Determine which categories to use
+    if not categories:
+        categories = get_categories(dataset_dir=dataset_path)
+
+    images = []
+    labels = []
+    masks = [] if include_masks else None
+    image_categories = []
+    filenames = []
+
+    for category in sorted(categories):
+        cat_images = []
+        cat_labels = []
+        cat_masks = [] if include_masks else None
+        cat_filenames = []
+
+        if split not in ("train", "test"):
+            raise ValueError("split must be 'train' or 'test'")
+
+        # ---------- TRAIN SPLIT ----------
+        if split == "train":
+            # Train only has 'good' (normal) images in MVTec
+            if label_filter == "anomalous":
+                # No anomalous samples in train split
+                continue
+
+            train_dir = os.path.join(dataset_path, category, "train", "good")
+            if not os.path.isdir(train_dir):
+                continue
+
+            train_files = sorted(
+                f
+                for f in os.listdir(train_dir)
+                if f.lower().endswith((".png", ".jpg", ".jpeg"))
+            )
+
+            if shuffle:
+                random.shuffle(train_files)
+
+            if num_per_category is not None:
+                train_files = train_files[:num_per_category]
+
+            for filename in train_files:
+                img_path = os.path.join(train_dir, filename)
+                img_bgr = cv2.imread(img_path)
+                if img_bgr is None:
+                    continue
+                img = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+
+                cat_images.append(img)
+                cat_labels.append(0)  # normal
+                cat_filenames.append(filename)
+
+                if include_masks:
+                    # No ground truth masks for train split; use all-zero mask
+                    mask = np.zeros(img.shape[:2], dtype=np.uint8)
+                    cat_masks.append(mask)
+
+        # ---------- TEST SPLIT ----------
+        else:  # split == "test"
+            test_dir = os.path.join(dataset_path, category, "test")
+            if not os.path.isdir(test_dir):
+                continue
+
+            # Subdirectories: 'good' + defect types
+            test_subdirs = [
+                d
+                for d in os.listdir(test_dir)
+                if os.path.isdir(os.path.join(test_dir, d))
+            ]
+
+            for subdir in sorted(test_subdirs):
+                is_good = (subdir == "good")
+                label = 0 if is_good else 1
+
+                # Apply label_filter
+                if label_filter == "normal" and not is_good:
+                    continue
+                if label_filter == "anomalous" and is_good:
+                    continue
+
+                subdir_path = os.path.join(test_dir, subdir)
+                files = sorted(
+                    f
+                    for f in os.listdir(subdir_path)
+                    if f.lower().endswith((".png", ".jpg", ".jpeg"))
+                )
+
+                if shuffle:
+                    random.shuffle(files)
+
+                # If num_per_category is set, limit total per category,
+                # not per subdir. So we check length inside the loop.
+                for filename in files:
+                    if (
+                        num_per_category is not None
+                        and len(cat_images) >= num_per_category
+                    ):
+                        break
+
+                    img_path = os.path.join(subdir_path, filename)
+                    img_bgr = cv2.imread(img_path)
+                    if img_bgr is None:
+                        continue
+                    img = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+
+                    cat_images.append(img)
+                    cat_labels.append(label)
+                    cat_filenames.append(filename)
+
+                    if include_masks:
+                        if not is_good:
+                            # Load ground truth mask if anomalous
+                            mask_dir = os.path.join(
+                                dataset_path, category, "ground_truth", subdir
+                            )
+                            mask_filename = filename.replace(".png", "_mask.png")
+                            mask_path = os.path.join(mask_dir, mask_filename)
+
+                            if os.path.exists(mask_path):
+                                mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+                                mask = (mask > 127).astype(np.uint8)
+                            else:
+                                # Fallback: empty mask
+                                mask = np.zeros(img.shape[:2], dtype=np.uint8)
+                        else:
+                            # No anomalies for 'good'
+                            mask = np.zeros(img.shape[:2], dtype=np.uint8)
+                        cat_masks.append(mask)
+
+        # Append category-wise data to global lists
+        images.extend(cat_images)
+        labels.extend(cat_labels)
+        image_categories.extend([category] * len(cat_images))
+        filenames.extend(cat_filenames)
+
+        if include_masks:
+            masks.extend(cat_masks)
+
+    print(
+        f"Sampled {len(images)} images from categories={categories}, "
+        f"split='{split}', label_filter='{label_filter}'"
+    )
+
+    return images, labels, masks, image_categories, filenames

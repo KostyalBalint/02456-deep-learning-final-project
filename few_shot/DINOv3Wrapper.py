@@ -21,6 +21,7 @@ class DINOv3Wrapper:
         if device is None:
             if torch.cuda.is_available():
                 self.device = torch.device("cuda")
+                print("Dino is using CUDA")
             else:
                 # Force CPU even if MPS is available (FAISS compatibility)
                 self.device = torch.device("cpu")
