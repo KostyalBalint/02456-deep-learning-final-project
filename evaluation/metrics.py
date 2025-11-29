@@ -121,21 +121,6 @@ def compute_pro(masks_gt, anomaly_maps, num_thresholds: int = 200, max_fpr: floa
 
 
 def compute_pixel_level_metrics(masks_gt, anomaly_maps):
-    """Compute pixel-level AUROC and optimal F1 score.
-
-    Use this to evaluate pixel-wise classification performance.
-
-    Args:
-        masks_gt: List of ground truth masks (H, W)
-        anomaly_maps: List of predicted anomaly maps (H, W)
-
-    Returns:
-        dict: {
-            'pixel_auroc': AUROC at pixel level,
-            'pixel_f1': Maximum F1 score across all thresholds,
-            'optimal_threshold': Threshold that achieves max F1
-        }
-    """
     if len(masks_gt) == 0 or len(anomaly_maps) == 0:
         return {
             'pixel_auroc': np.nan,

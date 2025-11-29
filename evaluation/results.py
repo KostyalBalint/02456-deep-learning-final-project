@@ -1,6 +1,6 @@
 import json
 import numpy as np
-from dataclasses import dataclass, asdict, field
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime
