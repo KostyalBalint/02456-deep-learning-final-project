@@ -13,8 +13,8 @@ import json
 import time
 import faiss
 
-from few_shot.DINOv3Wrapper import DINOv3Wrapper
-from mvtechDataset import ensure_mvtech_dataset_is_downloaded, get_categories, get_subcategories
+from utils.DINOv3Wrapper import DINOv3Wrapper
+from utils.mvtechDataset import ensure_mvtech_dataset_is_downloaded, get_categories, get_subcategories
 
 
 def parse_args():

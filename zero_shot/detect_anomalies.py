@@ -1,13 +1,14 @@
 import numpy as np
-from sklearn.neighbors import NearestNeighbors
+import hnswlib
+from utils.PCABGRemoval import get_foreground_mask_pca
 
-def detect_anomalies(model, nn_index: NearestNeighbors, test_image, use_masking=True, normalize_features=True):
+def detect_anomalies(model, nn_index: hnswlib.Index, test_image, use_masking=True, masking_method='threshold', normalize_features=True):
     """
     Zero-shot anomaly detection using batched memory bank approach.
-    
+
     Args:
         model: DINOv3Wrapper instance
-        nn_index: NearestNeighbors index containing the memory bank (all patches from all test images)
+        nn_index: hnswlib index containing the memory bank (all patches from all test images)
         test_image: PIL Image to detect anomalies in
         use_masking: Whether to apply background masking
         normalize_features: Whether to normalize features before distance calculation
@@ -23,10 +24,19 @@ def detect_anomalies(model, nn_index: NearestNeighbors, test_image, use_masking=
 
     # Apply PCA masking with percentile threshold
     if use_masking:
-        mask = model.compute_background_mask(features, grid_size,
-                                            threshold_percentile=70,
-                                            masking_type=True,
-                                            smoothing_sigma=4)
+        if masking_method == 'threshold':
+            mask = model.compute_background_mask(features, grid_size,
+                                                threshold_percentile=70,
+                                                masking_type=False,
+                                                smoothing_sigma=4)
+        if masking_method == 'pca':
+            mask_grid, pc_map, dbg = get_foreground_mask_pca(
+            feats=features,
+            grid_size=grid_size,
+            debug=False,
+            return_debug=True,
+            )
+            mask = (mask_grid.reshape(-1) > 0)
     else:
         mask = np.ones(features.shape[0], dtype=bool)
 
@@ -38,14 +48,13 @@ def detect_anomalies(model, nn_index: NearestNeighbors, test_image, use_masking=
 
     # Calculate Patch-Level Scores
     # For EACH test patch, find the mean of its 0.1% lowest distances to the memory bank
-    # Get the memory bank size from the nn_index
-    memory_bank_size = nn_index.n_samples_fit_
+    # Get the memory bank size from the hnswlib index
+    memory_bank_size = nn_index.get_current_count()
     k_patch = max(1, int(0.001 * memory_bank_size))
 
-    # Find k nearest neighbors (lowest distances) in memory bank
-    # distances shape: (num_masked_patches, k_patch)
-    # The distances are cosine distances (1 - cosine_similarity) since features are normalized
-    distances, indices = nn_index.kneighbors(features_masked, n_neighbors=k_patch)
+    # Find k nearest neighbors using hnswlib
+    # hnswlib with 'ip' space returns distance = 1 - inner_product (cosine distance for normalized vectors)
+    indices, distances = nn_index.knn_query(features_masked, k=k_patch)
 
     # Average the k lowest distances for each patch
     # This gives the anomaly score for each masked patch

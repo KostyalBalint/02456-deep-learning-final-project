@@ -223,3 +223,5 @@ output_visualizations
 /dataSources.local.xml
 
 .idea/
+results
+evaluation_results_clean
