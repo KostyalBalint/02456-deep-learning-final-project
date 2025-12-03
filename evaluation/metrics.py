@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 from sklearn.metrics import roc_auc_score, precision_recall_curve
-from utils.segmentation import anomaly_map_to_binary_mask
 
 
 def compute_auroc(labels, scores):
@@ -178,57 +177,20 @@ def compute_pixel_level_metrics(masks_gt, anomaly_maps):
 
 def compute_iou(
     masks_gt,
-    anomaly_maps,
-    method,   # 'percentile', 'gmm', or 'optimal'
-    smooth_sigma: float = 4,
-    percentile: float = 95.0,
-    gmm_min_points: int = 100,
+    pred_mask
 ):
-    if len(masks_gt) == 0 or len(anomaly_maps) == 0:
+    if len(masks_gt) == 0 or len(pred_mask) == 0:
         return {
             'mean_iou': np.nan,
             'per_image_iou': [],
             'threshold': np.nan,
         }
 
-    # If method='optimal', find a global F1-optimal threshold on scores
-    if method == "optimal":
-        all_gt = []
-        all_pred = []
-
-        for mask_gt, anomaly_map in zip(masks_gt, anomaly_maps):
-            # Resize anomaly map to GT size if needed
-            if anomaly_map.shape != mask_gt.shape:
-                anomaly_map_resized = cv2.resize(
-                    anomaly_map.astype(np.float32),
-                    (mask_gt.shape[1], mask_gt.shape[0]),
-                    interpolation=cv2.INTER_LINEAR,
-                )
-            else:
-                anomaly_map_resized = anomaly_map.astype(np.float32)
-
-            # Flatten
-            all_gt.append((mask_gt > 0).astype(int).flatten())
-            all_pred.append(anomaly_map_resized.flatten())
-
-        all_gt = np.concatenate(all_gt)
-        all_pred = np.concatenate(all_pred)
-
-        precisions, recalls, thresholds = precision_recall_curve(all_gt, all_pred)
-        f1_scores = 2 * (precisions * recalls) / (precisions + recalls + 1e-10)
-        optimal_idx = np.argmax(f1_scores[:-1])
-
-        if len(thresholds) > optimal_idx:
-            global_threshold = float(thresholds[optimal_idx])
-        else:
-            global_threshold = float(np.mean(all_pred))
-    else:
-        global_threshold = None
 
     # Per-image IoU computation
     per_image_iou = []
 
-    for mask_gt, anomaly_map in zip(masks_gt, anomaly_maps):
+    for mask_gt, anomaly_map in zip(masks_gt, pred_mask):
         # Resize anomaly map if needed
         if anomaly_map.shape != mask_gt.shape:
             anomaly_map_resized = cv2.resize(
@@ -239,23 +201,12 @@ def compute_iou(
         else:
             anomaly_map_resized = anomaly_map.astype(np.float32)
 
-        # --- 2a) Segmentation ---        
-        pred_mask_uint8 = anomaly_map_to_binary_mask(
-            anomaly_map_resized,
-            threshold=global_threshold if method=="optimal" else None,
-            method="percentile" if method == "optimal" else method,
-            smooth_sigma=smooth_sigma,
-            resize_to=None,
-            percentile=percentile,
-            gmm_min_points=gmm_min_points,
-        )
+        #pred_mask = (pred_mask > 0).astype(np.uint8)
+        #masks_gt = (mask_gt > 0).astype(np.uint8)
 
-        pred_mask = (pred_mask_uint8 > 0).astype(np.uint8)
-        gt_mask = (mask_gt > 0).astype(np.uint8)
-
-        # --- 2b) IoU computation ---
-        intersection = np.logical_and(pred_mask, gt_mask).sum()
-        union = np.logical_or(pred_mask, gt_mask).sum()
+        # IoU computation 
+        intersection = np.logical_and(pred_mask, masks_gt).sum()
+        union = np.logical_or(pred_mask, masks_gt).sum()
 
         if union == 0:
             iou = 1.0 if intersection == 0 else 0.0
@@ -269,5 +220,4 @@ def compute_iou(
     return {
         'mean_iou': mean_iou,
         'per_image_iou': per_image_iou,
-        'threshold': global_threshold,
     }

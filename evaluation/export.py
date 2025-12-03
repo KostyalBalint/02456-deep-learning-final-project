@@ -37,12 +37,6 @@ def export_summary_csv(results: ExperimentResults, output_path: Path):
 
 
 def export_per_object_csv(results: ExperimentResults, output_path: Path):
-    """Export per-object results to CSV.
-
-    Args:
-        results: ExperimentResults object
-        output_path: Path to save CSV file
-    """
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -58,10 +52,8 @@ def export_all(results: ExperimentResults, output_dir: Path):
 
     print("Exporting results in all formats...")
 
-    # JSON
     export_json(results, output_dir / 'results.json')
 
-    # CSV
     export_summary_csv(results, output_dir / 'summary.csv')
     export_per_object_csv(results, output_dir / 'per_object.csv')
 

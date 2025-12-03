@@ -54,4 +54,4 @@ def detect_anomalies(model, nn_index, test_image, use_masking=True, masking_meth
     num_top = max(1, int(len(distances) * 0.01))
     image_score = np.mean(np.sort(distances)[-num_top:])
 
-    return image_score, anomaly_map, patch_scores
+    return image_score, anomaly_map, patch_scores, mask_grid

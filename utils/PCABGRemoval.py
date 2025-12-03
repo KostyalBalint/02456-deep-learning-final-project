@@ -14,21 +14,20 @@ def get_foreground_mask_pca(
     H_grid, W_grid = grid_size
     assert feats.shape[0] == H_grid * W_grid, "feats and grid_size mismatch"
 
-    # 1) PCA (first component) on patch embeddings
+    # PCA (first component) on patch embeddings
     pca = PCA(n_components=1, svd_solver="randomized", random_state=42)
     pc_vals = pca.fit_transform(feats.astype(np.float32)).flatten()
 
-    # 2) Standardize PC (z-score) just for nicer thresholding
     pc_mean = pc_vals.mean()
     pc_std = pc_vals.std() + 1e-8
     pc_z = (pc_vals - pc_mean) / pc_std
 
-    # 3) Map z-scores to [0, 1] then [0,255] for Otsu
+    # Map z-scores to [0, 1] then [0,255] for Otsu
     pc_min, pc_max = pc_z.min(), pc_z.max()
     pc_01 = (pc_z - pc_min) / (pc_max - pc_min + 1e-8)
     pc_8u = (pc_01 * 255).astype(np.uint8)
 
-    # 4) Otsu threshold on normalized PC
+    # Otsu threshold on normalized PC
     otsu_thr_8u, _ = cv2.threshold(
         pc_8u, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
     )
@@ -38,17 +37,17 @@ def get_foreground_mask_pca(
     mask_otsu = pc_01 >= thr_01
     mask_otsu_2d = mask_otsu.reshape(H_grid, W_grid)
 
-    # 5) Optional flip: ensure center is mostly foreground
+    # Optional flip: ensure center is mostly foreground
     h0, h1 = int(H_grid * 0.25), int(H_grid * 0.75)
     w0, w1 = int(W_grid * 0.25), int(W_grid * 0.75)
     center = mask_otsu_2d[h0:h1, w0:w1]
     center_ratio = center.mean() if center.size > 0 else 0.0
 
     mask_center = mask_otsu_2d.copy()
-    if center_ratio < 0.35:  # assume object is roughly central
+    if center_ratio < 0.35:  # assume object is central
         mask_center = ~mask_center
 
-    # 6) Enforce reasonable foreground ratio via fallback if needed
+    # Enforce reasonable foreground ratio via fallback if needed
     fg_ratio_center = mask_center.mean()
     mask_fg = mask_center.copy()
     thr_fallback_z = None
@@ -59,7 +58,7 @@ def get_foreground_mask_pca(
 
     fg_ratio_pre_morph = mask_fg.mean()
 
-    # 7) Morphological cleanup + largest connected component
+    # Morphological cleanup + largest connected component
     mask_uint8 = mask_fg.astype(np.uint8)
     kernel = np.ones((3, 3), np.uint8)
     mask_clean = cv2.morphologyEx(mask_uint8, cv2.MORPH_CLOSE, kernel, iterations=2)
@@ -74,11 +73,11 @@ def get_foreground_mask_pca(
 
     fg_ratio_final = mask_clean.mean()
 
-    # 8) Detect "texture / bad segmentation" using *raw* PC variance
-    #    AND check if PCA map is mostly a simple plane (global gradient).
+    # Detect "texture / bad segmentation" using *raw* PC variance
+    # AND check if PCA map is mostly a simple plane (global gradient).
 
  
-    # ---- gradient-like (planar) structure on 2D PCA map ----
+    # gradient-like (planar) structure on 2D PCA map 
     pc2d = pc_z.reshape(H_grid, W_grid)
 
     ys, xs = np.mgrid[0:H_grid, 0:W_grid]
@@ -91,10 +90,10 @@ def get_foreground_mask_pca(
     total_std = pc2d.std() + 1e-8
     planar_ratio = res_std / total_std  # how much variance is NOT explained by a plane
 
-    grad_resid_thresh = 0.4  # tune: lower → more maps considered "pure gradient"
+    grad_resid_thresh = 0.4  # tune: lower -> more maps considered "pure gradient"
     gradient_like = planar_ratio < grad_resid_thresh
 
-    # ---- geometric thin-mask check (like before) ----
+    # geometric thin-mask check (like before) 
     ys_fg, xs_fg = np.where(mask_clean > 0)
     if ys_fg.size > 0:
         h_span = (ys_fg.max() - ys_fg.min() + 1) / H_grid

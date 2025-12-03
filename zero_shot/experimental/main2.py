@@ -42,18 +42,7 @@ def load_image(image_path: str) -> Image.Image:
 
 
 def batched_zero_shot_anomaly_detection(images: List[Image.Image], model: DINOv3Wrapper, use_masking: bool):
-    """
-    Notebook-style implementation with main.py's feature extraction.
-    
-    Args:
-        images: List of PIL images
-        model: DINOv3Wrapper instance
-        use_masking: Whether to apply background masking
-    
-    Returns:
-        image_level_scores: Array of anomaly scores per image
-        timing_stats: Dictionary with timing information
-    """
+
     timing_stats = {}
     num_images = len(images)
     

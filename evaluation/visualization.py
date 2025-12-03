@@ -31,11 +31,11 @@ def plot_single_result(
     
     print(segmentation_method)
     
-    # 2) Always generate predicted mask from anomaly map
+    # Always generate predicted mask from anomaly map
     predicted_mask = anomaly_map_to_binary_mask(
         anomaly_map_resized,
-        method=segmentation_method,  # 'gmm' / 'percentile'
-        smooth_sigma=0,              # already smoothed above
+        method=segmentation_method,
+        smooth_sigma=0, # already smoothed above
         resize_to=(h, w),
     )
 
@@ -362,22 +362,6 @@ def visualize_results(test_image,
                       vmax=None,
                       show_prediction_mask=True
 ):
-    """
-    Visualize anomaly detection results.
-
-    Args:
-        test_image: Original test image (numpy array H, W, C)
-        anomaly_map: Predicted anomaly map (grid_h, grid_w)
-        ground_truth_mask: Optional ground truth mask (H, W)
-        image_score: Optional image-level anomaly score
-        label: Optional ground truth label (0=normal, 1=anomalous)
-        sigma: Gaussian blur sigma for smoothing anomaly map
-        vmin: Minimum value for colorbar scaling (None = auto)
-        vmax: Maximum value for colorbar scaling (None = auto)
-        show_prediction_mask: Whether to show predicted binary segmentation mask
-        segmentation_method: Method for binary segmentation ('gmm', 'percentile')
-    """
-    
     
     # Apply Gaussian smoothing to anomaly map
     anomaly_map_smooth = gaussian_filter(anomaly_map, sigma=sigma)
@@ -455,20 +439,6 @@ def visualize_multiple_results(images,
                                num_display=6,
                                sigma=4,
                                show_prediction_mask=True):
-    """
-    Visualize results for multiple test images in a grid.
-
-    Args:
-        images: List of test images
-        anomaly_maps: List of anomaly maps
-        scores: List of image-level scores
-        labels: List of ground truth labels
-        ground_truth_masks: Optional list of ground truth masks
-        num_display: Number of images to display
-        sigma: Gaussian blur sigma
-        show_prediction_mask: Whether to show predicted binary segmentation masks
-        segmentation_method: Method for binary segmentation ('gmm', 'percentile')
-    """
     
     num_display = min(num_display, len(images))
 

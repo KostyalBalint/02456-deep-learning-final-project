@@ -41,13 +41,12 @@ class MethodResults:
             json.dump(self.to_dict(include_arrays=False), f, indent=2)
 
         # Save arrays as NPZ
-        array_path = path.with_suffix('.npz')        
+        array_path = path.with_suffix('.npz')
         np.savez_compressed(
             array_path,
             scores=self.scores,
             **{f'map_{i}': m for i, m in enumerate(self.maps)}
         )
-
 
     @classmethod
     def load(cls, path: Path) -> "MethodResults":
@@ -81,7 +80,6 @@ class MethodResults:
             config=data.get('config', {}),
             num_features=data.get('num_features')
         )
-
 
 
 @dataclass
@@ -122,11 +120,17 @@ class ExperimentResults:
             pixel_f1_scores = []
             iou_scores = []
 
+            cls_acc_scores = []
+            cls_prec_scores = []
+            cls_rec_scores = []
+            cls_f1_scores = []
+            tp_list, fp_list, fn_list, tn_list = [], [], [], []
+
             for obj, result in method_results.items():
                 metrics = result.metrics
                 auroc_scores.append(metrics.get('auroc', np.nan))
 
-                # Only include non-NaN values for pixel metrics
+                # Pixel-level metrics
                 if not np.isnan(metrics.get('aupro', np.nan)):
                     aupro_scores.append(metrics['aupro'])
                 if not np.isnan(metrics.get('pixel_auroc', np.nan)):
@@ -136,17 +140,59 @@ class ExperimentResults:
                 if not np.isnan(metrics.get('mean_iou', np.nan)):
                     iou_scores.append(metrics['mean_iou'])
 
-            summary_data.append({
-                'Method': method_name,
-                'Mean AUROC': np.mean(auroc_scores) if auroc_scores else np.nan,
-                'Std AUROC': np.std(auroc_scores) if auroc_scores else np.nan,
-                'Mean AU-PRO': np.mean(aupro_scores) if aupro_scores else np.nan,
-                'Std AU-PRO': np.std(aupro_scores) if aupro_scores else np.nan,
-                'Mean Pixel AUROC': np.mean(pixel_auroc_scores) if pixel_auroc_scores else np.nan,
-                'Mean Pixel F1': np.mean(pixel_f1_scores) if pixel_f1_scores else np.nan,
-                'Mean IoU': np.mean(iou_scores) if iou_scores else np.nan,
-                'Num Objects': len(method_results)
-            })
+                # Classification metrics (image-level)
+                acc = metrics.get('cls_accuracy', np.nan)
+                prec = metrics.get('cls_precision', np.nan)
+                rec = metrics.get('cls_recall', np.nan)
+                f1 = metrics.get('cls_f1', np.nan)
+
+                if not np.isnan(acc):
+                    cls_acc_scores.append(acc)
+                if not np.isnan(prec):
+                    cls_prec_scores.append(prec)
+                if not np.isnan(rec):
+                    cls_rec_scores.append(rec)
+                if not np.isnan(f1):
+                    cls_f1_scores.append(f1)
+
+                tp_list.append(metrics.get('cls_tp', 0))
+                fp_list.append(metrics.get('cls_fp', 0))
+                fn_list.append(metrics.get('cls_fn', 0))
+                tn_list.append(metrics.get('cls_tn', 0))
+
+            summary_data.append(
+                {
+                    'Method': method_name,
+                    'Mean AUROC': np.mean(auroc_scores) if auroc_scores else np.nan,
+                    'Std AUROC': np.std(auroc_scores) if auroc_scores else np.nan,
+                    'Mean AU-PRO': np.mean(aupro_scores) if aupro_scores else np.nan,
+                    'Std AU-PRO': np.std(aupro_scores) if aupro_scores else np.nan,
+                    'Mean Pixel AUROC': np.mean(pixel_auroc_scores)
+                    if pixel_auroc_scores
+                    else np.nan,
+                    'Mean Pixel F1': np.mean(pixel_f1_scores)
+                    if pixel_f1_scores
+                    else np.nan,
+                    'Mean IoU': np.mean(iou_scores) if iou_scores else np.nan,
+                    'Mean Cls Accuracy': np.mean(cls_acc_scores)
+                    if cls_acc_scores
+                    else np.nan,
+                    'Mean Cls Precision': np.mean(cls_prec_scores)
+                    if cls_prec_scores
+                    else np.nan,
+                    'Mean Cls Recall': np.mean(cls_rec_scores)
+                    if cls_rec_scores
+                    else np.nan,
+                    'Mean Cls F1': np.mean(cls_f1_scores)
+                    if cls_f1_scores
+                    else np.nan,
+                    'Total TP': int(np.sum(tp_list)),
+                    'Total FP': int(np.sum(fp_list)),
+                    'Total FN': int(np.sum(fn_list)),
+                    'Total TN': int(np.sum(tn_list)),
+                    'Num Objects': len(method_results),
+                }
+            )
 
         df = pd.DataFrame(summary_data)
         return df.sort_values('Mean AUROC', ascending=False)
@@ -156,15 +202,26 @@ class ExperimentResults:
 
         for obj_name in self.list_objects():
             for method_name, result in self.results[obj_name].items():
-                rows.append({
-                    'Object': obj_name,
-                    'Method': method_name,
-                    'AUROC': result.metrics.get('auroc', np.nan),
-                    'AU-PRO': result.metrics.get('aupro', np.nan),
-                    'Pixel AUROC': result.metrics.get('pixel_auroc', np.nan),
-                    'Pixel F1': result.metrics.get('pixel_f1', np.nan),
-                    'IoU': result.metrics.get('mean_iou', np.nan)
-                })
+                m = result.metrics
+                rows.append(
+                    {
+                        'Object': obj_name,
+                        'Method': method_name,
+                        'AUROC': m.get('auroc', np.nan),
+                        'AU-PRO': m.get('aupro', np.nan),
+                        'Pixel AUROC': m.get('pixel_auroc', np.nan),
+                        'Pixel F1': m.get('pixel_f1', np.nan),
+                        'IoU': m.get('mean_iou', np.nan),
+                        'Cls Accuracy': m.get('cls_accuracy', np.nan),
+                        'Cls Precision': m.get('cls_precision', np.nan),
+                        'Cls Recall': m.get('cls_recall', np.nan),
+                        'Cls F1': m.get('cls_f1', np.nan),
+                        'TP': m.get('cls_tp', np.nan),
+                        'FP': m.get('cls_fp', np.nan),
+                        'FN': m.get('cls_fn', np.nan),
+                        'TN': m.get('cls_tn', np.nan),
+                    }
+                )
 
         return pd.DataFrame(rows)
 
@@ -181,13 +238,15 @@ class ExperimentResults:
             val_b = results_b[obj].metrics.get(metric, np.nan)
             diff = val_b - val_a if not (np.isnan(val_a) or np.isnan(val_b)) else np.nan
 
-            comparison_data.append({
-                'Object': obj,
-                f'{method_a}': val_a,
-                f'{method_b}': val_b,
-                'Difference (B-A)': diff,
-                'Improvement %': (diff / val_a * 100) if val_a != 0 else np.nan
-            })
+            comparison_data.append(
+                {
+                    'Object': obj,
+                    f'{method_a}': val_a,
+                    f'{method_b}': val_b,
+                    'Difference (B-A)': diff,
+                    'Improvement %': (diff / val_a * 100) if val_a != 0 else np.nan,
+                }
+            )
 
         df = pd.DataFrame(comparison_data)
 
@@ -200,11 +259,13 @@ class ExperimentResults:
                 from scipy import stats
                 t_stat, p_value = stats.ttest_rel(values_a, values_b)
 
-                print(f"\nStatistical Comparison ({metric}):")
-                print(f"  {method_a}: {values_a.mean():.4f} ± {values_a.std():.4f}")
-                print(f"  {method_b}: {values_b.mean():.4f} ± {values_b.std():.4f}")
-                print(f"  Paired t-test: t={t_stat:.4f}, p={p_value:.4f}")
-                print(f"  Significant at α=0.05: {'Yes' if p_value < 0.05 else 'No'}")
+                print(f'\nStatistical Comparison ({metric}):')
+                print(f'  {method_a}: {values_a.mean():.4f} ± {values_a.std():.4f}')
+                print(f'  {method_b}: {values_b.mean():.4f} ± {values_b.std():.4f}')
+                print(f'  Paired t-test: t={t_stat:.4f}, p={p_value:.4f}')
+                print(
+                    f'  Significant at α=0.05: {'Yes' if p_value < 0.05 else 'No'}'
+                )
 
         return df
 

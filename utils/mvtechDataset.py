@@ -9,6 +9,9 @@ import urllib.request
 import numpy as np
 from tqdm.auto import tqdm
 
+import cv2
+import random
+
 
 def load_mvtec_data(dataset_path, category, num_shots=8):
     """
@@ -167,50 +170,6 @@ def sample_mvtec_images(
     shuffle=True,
     seed=None,
 ):
-    """
-    Sample images from one or multiple MVTec categories.
-
-    Args:
-        dataset_path (str):
-            Path to MVTec dataset root (directory that directly contains categories).
-        categories (list[str] or None):
-            List of category names to sample from (e.g. ['bottle', 'capsule']).
-            If None or empty, all categories in dataset_path will be used.
-        split (str):
-            'train' or 'test'.
-            - 'train' only has normal ('good') images.
-            - 'test' has 'good' + defect types.
-        num_per_category (int or None):
-            Maximum number of images to draw per category (after filtering by label).
-            If None, use all available images from each category.
-        label_filter (str):
-            One of:
-                'all'        → use both normal and anomalous (if present)
-                'normal'     → only normal ('good')
-                'anomalous'  → only anomalous (non-'good')
-        include_masks (bool):
-            If True and split == 'test', return anomaly masks for anomalous images.
-            For normal images, masks will be all zeros.
-            For split == 'train', masks will be all zeros (no ground truth masks).
-        shuffle (bool):
-            If True, shuffle images within each category before sampling.
-        seed (int or None):
-            Random seed for reproducible shuffling.
-
-    Returns:
-        images (list[np.ndarray]):  List of HxWx3 RGB images.
-        labels (list[int]):         0 = normal, 1 = anomalous.
-        masks (list[np.ndarray] or None):
-                                   If include_masks is True, list of HxW uint8 masks
-                                   (0/1). Otherwise None.
-        image_categories (list[str]):
-                                   Category name for each image (same length as images).
-        filenames (list[str]):     Original filename for each image.
-    """
-    import os
-    import cv2
-    import numpy as np
-    import random
 
     if seed is not None:
         random.seed(seed)
