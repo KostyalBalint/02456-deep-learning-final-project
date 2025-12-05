@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "metal_nut",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.8285667344391061,
+    "pixel_auroc": 0.982503759412864,
+    "pixel_f1": 0.8721638606772474,
+    "mean_iou": 0.4698489835524544,
+    "cls_accuracy": 0.8173913043478261,
+    "cls_precision": 0.8157894736842105,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8985507246376812,
+    "cls_tp": 93,
+    "cls_fp": 21,
+    "cls_fn": 0,
+    "cls_tn": 1
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

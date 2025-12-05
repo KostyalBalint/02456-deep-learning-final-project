@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "carpet",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.8326194029391104,
+    "pixel_auroc": 0.9915815023062479,
+    "pixel_f1": 0.7320865105139558,
+    "mean_iou": 0.10154585187373569,
+    "cls_accuracy": 0.7777777777777778,
+    "cls_precision": 0.7837837837837838,
+    "cls_recall": 0.9775280898876404,
+    "cls_f1": 0.87,
+    "cls_tp": 87,
+    "cls_fp": 24,
+    "cls_fn": 2,
+    "cls_tn": 4
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

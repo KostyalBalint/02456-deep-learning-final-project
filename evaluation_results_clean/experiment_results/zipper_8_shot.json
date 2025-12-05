@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "zipper",
+  "metrics": {
+    "auroc": 0.9574579831932772,
+    "aupro": 0.8606203977846993,
+    "pixel_auroc": 0.9794379714406191,
+    "pixel_f1": 0.600835931361858,
+    "mean_iou": 0.09269393175654955,
+    "cls_accuracy": 0.8145695364238411,
+    "cls_precision": 0.8226950354609929,
+    "cls_recall": 0.9747899159663865,
+    "cls_f1": 0.8923076923076924,
+    "cls_tp": 116,
+    "cls_fp": 25,
+    "cls_fn": 3,
+    "cls_tn": 7
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

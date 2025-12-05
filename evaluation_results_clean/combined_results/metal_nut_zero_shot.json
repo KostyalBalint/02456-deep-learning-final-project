@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "metal_nut",
+  "metrics": {
+    "auroc": 0.9980449657869013,
+    "aupro": 0.8012031091354681,
+    "pixel_auroc": 0.7952540349712034,
+    "pixel_f1": 0.42577201060205383,
+    "mean_iou": 0.41404097168166204,
+    "cls_accuracy": 0.808695652173913,
+    "cls_precision": 0.808695652173913,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8942307692307693,
+    "cls_tp": 93,
+    "cls_fp": 22,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 182400
+}

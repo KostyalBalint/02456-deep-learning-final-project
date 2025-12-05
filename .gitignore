@@ -134,6 +134,7 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+
 # Environments
 .env
 .envrc
@@ -224,4 +225,4 @@ output_visualizations
 
 .idea/
 results
-evaluation_results_clean
+*.npz

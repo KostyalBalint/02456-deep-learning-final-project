@@ -1,0 +1,27 @@
+{
+  "method_name": "1_shot",
+  "object_name": "transistor",
+  "metrics": {
+    "auroc": 0.83875,
+    "aupro": 0.42515686078111903,
+    "pixel_auroc": 0.675849577878869,
+    "pixel_f1": 0.4150959662687198,
+    "mean_iou": 0.21502586222370298,
+    "cls_accuracy": 0.4,
+    "cls_precision": 0.3979591836734694,
+    "cls_recall": 0.975,
+    "cls_f1": 0.5652173913043478,
+    "cls_tp": 39,
+    "cls_fp": 59,
+    "cls_fn": 1,
+    "cls_tn": 1
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 12800
+}

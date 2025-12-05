@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "screw",
+  "metrics": {
+    "auroc": 0.6089362574298013,
+    "aupro": 0.5858105883173182,
+    "pixel_auroc": 0.8115759657977093,
+    "pixel_f1": 0.21644789526317273,
+    "mean_iou": 0.008903792147757316,
+    "cls_accuracy": 0.74375,
+    "cls_precision": 0.7708333333333334,
+    "cls_recall": 0.9327731092436975,
+    "cls_f1": 0.844106463878327,
+    "cls_tp": 111,
+    "cls_fp": 33,
+    "cls_fn": 8,
+    "cls_tn": 8
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "leather",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.9546062075062245,
+    "pixel_auroc": 0.9856961973771635,
+    "pixel_f1": 0.4300279018069367,
+    "mean_iou": 0.031266869614171404,
+    "cls_accuracy": 0.8145161290322581,
+    "cls_precision": 0.8108108108108109,
+    "cls_recall": 0.9782608695652174,
+    "cls_f1": 0.8866995073891626,
+    "cls_tp": 90,
+    "cls_fp": 21,
+    "cls_fn": 2,
+    "cls_tn": 11
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

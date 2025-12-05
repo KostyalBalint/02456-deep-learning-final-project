@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "zipper",
+  "metrics": {
+    "auroc": 0.9088760504201681,
+    "aupro": 0.7019593859193722,
+    "pixel_auroc": 0.9798121079274158,
+    "pixel_f1": 0.5719130478893854,
+    "mean_iou": 0.0887380339224369,
+    "cls_accuracy": 0.8013245033112583,
+    "cls_precision": 0.8027210884353742,
+    "cls_recall": 0.9915966386554622,
+    "cls_f1": 0.8872180451127819,
+    "cls_tp": 118,
+    "cls_fp": 29,
+    "cls_fn": 1,
+    "cls_tn": 3
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 240000
+}

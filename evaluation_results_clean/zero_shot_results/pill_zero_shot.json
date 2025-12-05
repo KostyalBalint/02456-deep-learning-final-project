@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "pill",
+  "metrics": {
+    "auroc": 0.9228041462084013,
+    "aupro": 0.893137802738832,
+    "pixel_auroc": 0.9709353542604588,
+    "pixel_f1": 0.6260108221312063,
+    "mean_iou": 0.12251196210110946,
+    "cls_accuracy": 0.844311377245509,
+    "cls_precision": 0.844311377245509,
+    "cls_recall": 1.0,
+    "cls_f1": 0.9155844155844156,
+    "cls_tp": 141,
+    "cls_fp": 26,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 265600
+}

@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "grid",
+  "metrics": {
+    "auroc": 0.9724310776942355,
+    "aupro": 0.7815008622751984,
+    "pixel_auroc": 0.9470449776553551,
+    "pixel_f1": 0.3494666692406162,
+    "mean_iou": 0.028000166832746722,
+    "cls_accuracy": 0.7435897435897436,
+    "cls_precision": 0.7466666666666667,
+    "cls_recall": 0.9824561403508771,
+    "cls_f1": 0.8484848484848485,
+    "cls_tp": 56,
+    "cls_fp": 19,
+    "cls_fn": 1,
+    "cls_tn": 2
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

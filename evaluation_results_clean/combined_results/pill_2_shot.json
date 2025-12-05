@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "pill",
+  "metrics": {
+    "auroc": 0.9470812875068195,
+    "aupro": 0.8396465866855665,
+    "pixel_auroc": 0.9712247982622594,
+    "pixel_f1": 0.6379426594999404,
+    "mean_iou": 0.12686951691874016,
+    "cls_accuracy": 0.844311377245509,
+    "cls_precision": 0.844311377245509,
+    "cls_recall": 1.0,
+    "cls_f1": 0.9155844155844156,
+    "cls_tp": 141,
+    "cls_fp": 26,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

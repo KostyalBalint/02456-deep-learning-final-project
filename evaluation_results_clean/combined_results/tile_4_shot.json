@@ -1,0 +1,27 @@
+{
+  "method_name": "4_shot",
+  "object_name": "tile",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.7087421837308756,
+    "pixel_auroc": 0.7369570128078748,
+    "pixel_f1": 0.5775787631757333,
+    "mean_iou": 0.22852106815138096,
+    "cls_accuracy": 0.7435897435897436,
+    "cls_precision": 0.7454545454545455,
+    "cls_recall": 0.9761904761904762,
+    "cls_f1": 0.845360824742268,
+    "cls_tp": 82,
+    "cls_fp": 28,
+    "cls_fn": 2,
+    "cls_tn": 5
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 51200
+}

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-12-05T16:31:23.911804",
+  "description": "Few-shot: rotation=True, masking=True + Zero-shot: masking=True",
+  "objects": [
+    "bottle",
+    "cable",
+    "capsule",
+    "carpet",
+    "grid",
+    "hazelnut",
+    "leather",
+    "metal_nut",
+    "pill",
+    "screw",
+    "tile",
+    "toothbrush",
+    "transistor",
+    "wood",
+    "zipper"
+  ],
+  "methods": [
+    "1_shot",
+    "2_shot",
+    "4_shot",
+    "8_shot",
+    "zero_shot"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "method_name": "1_shot",
+  "object_name": "bottle",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.8527846781439476,
+    "pixel_auroc": 0.988336856173477,
+    "pixel_f1": 0.8290522801651964,
+    "mean_iou": 0.33049037213482607,
+    "cls_accuracy": 0.8192771084337349,
+    "cls_precision": 0.8076923076923077,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8936170212765957,
+    "cls_tp": 63,
+    "cls_fp": 15,
+    "cls_fn": 0,
+    "cls_tn": 5
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 12800
+}

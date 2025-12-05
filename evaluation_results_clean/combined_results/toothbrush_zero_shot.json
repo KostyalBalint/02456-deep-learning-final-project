@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "toothbrush",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.9378254251801893,
+    "pixel_auroc": 0.9887087984882206,
+    "pixel_f1": 0.76979506216024,
+    "mean_iou": 0.1222485168534148,
+    "cls_accuracy": 0.7142857142857143,
+    "cls_precision": 0.7142857142857143,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8333333333333334,
+    "cls_tp": 30,
+    "cls_fp": 12,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 65600
+}

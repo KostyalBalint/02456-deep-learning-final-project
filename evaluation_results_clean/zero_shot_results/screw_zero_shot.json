@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "screw",
+  "metrics": {
+    "auroc": 0.6632506661201066,
+    "aupro": 0.7180746875365561,
+    "pixel_auroc": 0.8533422601974587,
+    "pixel_f1": 0.3350264222685061,
+    "mean_iou": 0.009173590822838609,
+    "cls_accuracy": 0.66875,
+    "cls_precision": 0.7323943661971831,
+    "cls_recall": 0.8739495798319328,
+    "cls_f1": 0.7969348659003831,
+    "cls_tp": 104,
+    "cls_fp": 38,
+    "cls_fn": 15,
+    "cls_tn": 3
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 254400
+}

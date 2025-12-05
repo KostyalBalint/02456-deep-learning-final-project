@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "grid",
+  "metrics": {
+    "auroc": 0.9849624060150376,
+    "aupro": 0.8439428740433202,
+    "pixel_auroc": 0.9633170833424711,
+    "pixel_f1": 0.30490990073983915,
+    "mean_iou": 0.021913152705024055,
+    "cls_accuracy": 0.6666666666666666,
+    "cls_precision": 0.7123287671232876,
+    "cls_recall": 0.9122807017543859,
+    "cls_f1": 0.8,
+    "cls_tp": 52,
+    "cls_fp": 21,
+    "cls_fn": 5,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 123200
+}

@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "toothbrush",
+  "metrics": {
+    "auroc": 0.9916666666666666,
+    "aupro": 0.8860200380739427,
+    "pixel_auroc": 0.9876269152047036,
+    "pixel_f1": 0.7430894828738986,
+    "mean_iou": 0.1281493362948701,
+    "cls_accuracy": 0.7142857142857143,
+    "cls_precision": 0.7142857142857143,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8333333333333334,
+    "cls_tp": 30,
+    "cls_fp": 12,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

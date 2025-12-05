@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "tile",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.7052625595867407,
+    "pixel_auroc": 0.7561219436096505,
+    "pixel_f1": 0.5898164912961006,
+    "mean_iou": 0.21879699915919607,
+    "cls_accuracy": 0.717948717948718,
+    "cls_precision": 0.7297297297297297,
+    "cls_recall": 0.9642857142857143,
+    "cls_f1": 0.8307692307692308,
+    "cls_tp": 81,
+    "cls_fp": 30,
+    "cls_fn": 3,
+    "cls_tn": 3
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 185600
+}

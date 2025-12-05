@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "pill",
+  "metrics": {
+    "auroc": 0.9541734860883797,
+    "aupro": 0.9275425969199141,
+    "pixel_auroc": 0.9753920808073795,
+    "pixel_f1": 0.6578366014128892,
+    "mean_iou": 0.12831575136666187,
+    "cls_accuracy": 0.844311377245509,
+    "cls_precision": 0.844311377245509,
+    "cls_recall": 1.0,
+    "cls_f1": 0.9155844155844156,
+    "cls_tp": 141,
+    "cls_fp": 26,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

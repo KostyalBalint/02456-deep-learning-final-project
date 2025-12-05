@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "wood",
+  "metrics": {
+    "auroc": 0.9912280701754386,
+    "aupro": 0.8074138033726143,
+    "pixel_auroc": 0.832904819097413,
+    "pixel_f1": 0.5572336432320434,
+    "mean_iou": 0.09136472745811673,
+    "cls_accuracy": 0.7341772151898734,
+    "cls_precision": 0.7746478873239436,
+    "cls_recall": 0.9166666666666666,
+    "cls_f1": 0.8396946564885496,
+    "cls_tp": 55,
+    "cls_fp": 16,
+    "cls_fn": 5,
+    "cls_tn": 3
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 124800
+}

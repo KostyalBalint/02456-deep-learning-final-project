@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "wood",
+  "metrics": {
+    "auroc": 0.9833333333333334,
+    "aupro": 0.7444478041745652,
+    "pixel_auroc": 0.8033785348519316,
+    "pixel_f1": 0.5301541375807645,
+    "mean_iou": 0.1025659472101181,
+    "cls_accuracy": 0.7721518987341772,
+    "cls_precision": 0.7763157894736842,
+    "cls_recall": 0.9833333333333333,
+    "cls_f1": 0.8676470588235294,
+    "cls_tp": 59,
+    "cls_fp": 17,
+    "cls_fn": 1,
+    "cls_tn": 2
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

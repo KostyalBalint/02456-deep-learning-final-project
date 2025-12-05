@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "hazelnut",
+  "metrics": {
+    "auroc": 0.9617857142857144,
+    "aupro": 0.8890335739605304,
+    "pixel_auroc": 0.991773064868133,
+    "pixel_f1": 0.7846266196321577,
+    "mean_iou": 0.14851805111194477,
+    "cls_accuracy": 0.6363636363636364,
+    "cls_precision": 0.6363636363636364,
+    "cls_recall": 1.0,
+    "cls_f1": 0.7777777777777778,
+    "cls_tp": 70,
+    "cls_fp": 40,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 174400
+}

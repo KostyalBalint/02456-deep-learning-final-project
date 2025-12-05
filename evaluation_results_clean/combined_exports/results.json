@@ -1,0 +1,2040 @@
+{
+  "timestamp": "2025-12-05T16:31:23.911804",
+  "description": "Few-shot: rotation=True, masking=True + Zero-shot: masking=True",
+  "objects": [
+    "bottle",
+    "cable",
+    "capsule",
+    "carpet",
+    "grid",
+    "hazelnut",
+    "leather",
+    "metal_nut",
+    "pill",
+    "screw",
+    "tile",
+    "toothbrush",
+    "transistor",
+    "wood",
+    "zipper"
+  ],
+  "methods": [
+    "1_shot",
+    "2_shot",
+    "4_shot",
+    "8_shot",
+    "zero_shot"
+  ],
+  "results": {
+    "leather": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "leather",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9017699044424925,
+          "pixel_auroc": 0.9850209217936648,
+          "pixel_f1": 0.4252144205673877,
+          "mean_iou": 0.030241329921589233,
+          "cls_accuracy": 0.7661290322580645,
+          "cls_precision": 0.7692307692307693,
+          "cls_recall": 0.9782608695652174,
+          "cls_f1": 0.861244019138756,
+          "cls_tp": 90,
+          "cls_fp": 27,
+          "cls_fn": 2,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "leather",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9075108991169806,
+          "pixel_auroc": 0.9861888644143814,
+          "pixel_f1": 0.4344417014233625,
+          "mean_iou": 0.03163011672977728,
+          "cls_accuracy": 0.7983870967741935,
+          "cls_precision": 0.7863247863247863,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8803827751196173,
+          "cls_tp": 92,
+          "cls_fp": 25,
+          "cls_fn": 0,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "leather",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.8929508108379821,
+          "pixel_auroc": 0.9860946298973264,
+          "pixel_f1": 0.4413014826359155,
+          "mean_iou": 0.031312211670091926,
+          "cls_accuracy": 0.8145161290322581,
+          "cls_precision": 0.8053097345132744,
+          "cls_recall": 0.9891304347826086,
+          "cls_f1": 0.8878048780487805,
+          "cls_tp": 91,
+          "cls_fp": 22,
+          "cls_fn": 1,
+          "cls_tn": 10
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "leather",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9546062075062245,
+          "pixel_auroc": 0.9856961973771635,
+          "pixel_f1": 0.4300279018069367,
+          "mean_iou": 0.031266869614171404,
+          "cls_accuracy": 0.8145161290322581,
+          "cls_precision": 0.8108108108108109,
+          "cls_recall": 0.9782608695652174,
+          "cls_f1": 0.8866995073891626,
+          "cls_tp": 90,
+          "cls_fp": 21,
+          "cls_fn": 2,
+          "cls_tn": 11
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "leather",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.931535347529688,
+          "pixel_auroc": 0.9931248782707375,
+          "pixel_f1": 0.5764004931650036,
+          "mean_iou": 0.0275420750859163,
+          "cls_accuracy": 0.8145161290322581,
+          "cls_precision": 0.8,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8888888888888888,
+          "cls_tp": 92,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 9
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 196800
+      }
+    },
+    "grid": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "grid",
+        "metrics": {
+          "auroc": 0.9557226399331662,
+          "aupro": 0.78674700460998,
+          "pixel_auroc": 0.937101655651312,
+          "pixel_f1": 0.33202726325703524,
+          "mean_iou": 0.026592719362519647,
+          "cls_accuracy": 0.8076923076923077,
+          "cls_precision": 0.8,
+          "cls_recall": 0.9824561403508771,
+          "cls_f1": 0.8818897637795275,
+          "cls_tp": 56,
+          "cls_fp": 14,
+          "cls_fn": 1,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "grid",
+        "metrics": {
+          "auroc": 0.962406015037594,
+          "aupro": 0.7702262121282509,
+          "pixel_auroc": 0.9415913403918085,
+          "pixel_f1": 0.3397040464407639,
+          "mean_iou": 0.026309283309898714,
+          "cls_accuracy": 0.7564102564102564,
+          "cls_precision": 0.7567567567567568,
+          "cls_recall": 0.9824561403508771,
+          "cls_f1": 0.8549618320610687,
+          "cls_tp": 56,
+          "cls_fp": 18,
+          "cls_fn": 1,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "grid",
+        "metrics": {
+          "auroc": 0.9607351712614871,
+          "aupro": 0.7926453838836649,
+          "pixel_auroc": 0.9473880272201052,
+          "pixel_f1": 0.34936549404000056,
+          "mean_iou": 0.02818241681850137,
+          "cls_accuracy": 0.7692307692307693,
+          "cls_precision": 0.7746478873239436,
+          "cls_recall": 0.9649122807017544,
+          "cls_f1": 0.859375,
+          "cls_tp": 55,
+          "cls_fp": 16,
+          "cls_fn": 2,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "grid",
+        "metrics": {
+          "auroc": 0.9724310776942355,
+          "aupro": 0.7815008622751984,
+          "pixel_auroc": 0.9470449776553551,
+          "pixel_f1": 0.3494666692406162,
+          "mean_iou": 0.028000166832746722,
+          "cls_accuracy": 0.7435897435897436,
+          "cls_precision": 0.7466666666666667,
+          "cls_recall": 0.9824561403508771,
+          "cls_f1": 0.8484848484848485,
+          "cls_tp": 56,
+          "cls_fp": 19,
+          "cls_fn": 1,
+          "cls_tn": 2
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "grid",
+        "metrics": {
+          "auroc": 0.9849624060150376,
+          "aupro": 0.8439428740433202,
+          "pixel_auroc": 0.9633170833424711,
+          "pixel_f1": 0.30490990073983915,
+          "mean_iou": 0.021913152705024055,
+          "cls_accuracy": 0.6666666666666666,
+          "cls_precision": 0.7123287671232876,
+          "cls_recall": 0.9122807017543859,
+          "cls_f1": 0.8,
+          "cls_tp": 52,
+          "cls_fp": 21,
+          "cls_fn": 5,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 123200
+      }
+    },
+    "screw": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "screw",
+        "metrics": {
+          "auroc": 0.5931543349046936,
+          "aupro": 0.47928710938911323,
+          "pixel_auroc": 0.7802142356701834,
+          "pixel_f1": 0.17373582684522695,
+          "mean_iou": 0.00709692788641943,
+          "cls_accuracy": 0.74375,
+          "cls_precision": 0.756578947368421,
+          "cls_recall": 0.9663865546218487,
+          "cls_f1": 0.8487084870848709,
+          "cls_tp": 115,
+          "cls_fp": 37,
+          "cls_fn": 4,
+          "cls_tn": 4
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "screw",
+        "metrics": {
+          "auroc": 0.6089362574298013,
+          "aupro": 0.5858105883173182,
+          "pixel_auroc": 0.8115759657977093,
+          "pixel_f1": 0.21644789526317273,
+          "mean_iou": 0.008903792147757316,
+          "cls_accuracy": 0.74375,
+          "cls_precision": 0.7708333333333334,
+          "cls_recall": 0.9327731092436975,
+          "cls_f1": 0.844106463878327,
+          "cls_tp": 111,
+          "cls_fp": 33,
+          "cls_fn": 8,
+          "cls_tn": 8
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "screw",
+        "metrics": {
+          "auroc": 0.6876409100225457,
+          "aupro": 0.6507440425998408,
+          "pixel_auroc": 0.832909101903244,
+          "pixel_f1": 0.25887151748201354,
+          "mean_iou": 0.009148172800916935,
+          "cls_accuracy": 0.7,
+          "cls_precision": 0.7553956834532374,
+          "cls_recall": 0.8823529411764706,
+          "cls_f1": 0.813953488372093,
+          "cls_tp": 105,
+          "cls_fp": 34,
+          "cls_fn": 14,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "screw",
+        "metrics": {
+          "auroc": 0.7380610780897725,
+          "aupro": 0.6738992383433372,
+          "pixel_auroc": 0.8451620197545765,
+          "pixel_f1": 0.3201393494835707,
+          "mean_iou": 0.009623697544490377,
+          "cls_accuracy": 0.7,
+          "cls_precision": 0.7482517482517482,
+          "cls_recall": 0.8991596638655462,
+          "cls_f1": 0.816793893129771,
+          "cls_tp": 107,
+          "cls_fp": 36,
+          "cls_fn": 12,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "screw",
+        "metrics": {
+          "auroc": 0.6632506661201066,
+          "aupro": 0.7180746875365561,
+          "pixel_auroc": 0.8533422601974587,
+          "pixel_f1": 0.3350264222685061,
+          "mean_iou": 0.009173590822838609,
+          "cls_accuracy": 0.66875,
+          "cls_precision": 0.7323943661971831,
+          "cls_recall": 0.8739495798319328,
+          "cls_f1": 0.7969348659003831,
+          "cls_tp": 104,
+          "cls_fp": 38,
+          "cls_fn": 15,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 254400
+      }
+    },
+    "hazelnut": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "hazelnut",
+        "metrics": {
+          "auroc": 0.98,
+          "aupro": 0.9156969171100257,
+          "pixel_auroc": 0.9928462603787824,
+          "pixel_f1": 0.8144660766312868,
+          "mean_iou": 0.16571435066103435,
+          "cls_accuracy": 0.6363636363636364,
+          "cls_precision": 0.6363636363636364,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7777777777777778,
+          "cls_tp": 70,
+          "cls_fp": 40,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "hazelnut",
+        "metrics": {
+          "auroc": 0.979642857142857,
+          "aupro": 0.8935781173339945,
+          "pixel_auroc": 0.9929879526903915,
+          "pixel_f1": 0.8149255235681356,
+          "mean_iou": 0.16595206857328804,
+          "cls_accuracy": 0.6363636363636364,
+          "cls_precision": 0.6363636363636364,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7777777777777778,
+          "cls_tp": 70,
+          "cls_fp": 40,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "hazelnut",
+        "metrics": {
+          "auroc": 0.9864285714285714,
+          "aupro": 0.9044584489700103,
+          "pixel_auroc": 0.9941148543472506,
+          "pixel_f1": 0.841312915593774,
+          "mean_iou": 0.1688378047177548,
+          "cls_accuracy": 0.6363636363636364,
+          "cls_precision": 0.6363636363636364,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7777777777777778,
+          "cls_tp": 70,
+          "cls_fp": 40,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "hazelnut",
+        "metrics": {
+          "auroc": 0.9857142857142858,
+          "aupro": 0.9253199517409726,
+          "pixel_auroc": 0.994453888921616,
+          "pixel_f1": 0.8400499640644794,
+          "mean_iou": 0.17127871621402743,
+          "cls_accuracy": 0.6363636363636364,
+          "cls_precision": 0.6363636363636364,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7777777777777778,
+          "cls_tp": 70,
+          "cls_fp": 40,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "hazelnut",
+        "metrics": {
+          "auroc": 0.9617857142857144,
+          "aupro": 0.8890335739605304,
+          "pixel_auroc": 0.991773064868133,
+          "pixel_f1": 0.7846266196321577,
+          "mean_iou": 0.14851805111194477,
+          "cls_accuracy": 0.6363636363636364,
+          "cls_precision": 0.6363636363636364,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7777777777777778,
+          "cls_tp": 70,
+          "cls_fp": 40,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 174400
+      }
+    },
+    "capsule": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "capsule",
+        "metrics": {
+          "auroc": 0.9174311926605505,
+          "aupro": 0.8750977731268789,
+          "pixel_auroc": 0.9855589546888734,
+          "pixel_f1": 0.551868501480449,
+          "mean_iou": 0.05468251412784333,
+          "cls_accuracy": 0.8257575757575758,
+          "cls_precision": 0.8257575757575758,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9045643153526971,
+          "cls_tp": 109,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "capsule",
+        "metrics": {
+          "auroc": 0.9341842840047866,
+          "aupro": 0.8456963948959866,
+          "pixel_auroc": 0.9884707844261559,
+          "pixel_f1": 0.5506828495563381,
+          "mean_iou": 0.05848210144874319,
+          "cls_accuracy": 0.8257575757575758,
+          "cls_precision": 0.8257575757575758,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9045643153526971,
+          "cls_tp": 109,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "capsule",
+        "metrics": {
+          "auroc": 0.9493418428400479,
+          "aupro": 0.8665491021725312,
+          "pixel_auroc": 0.9896628075771523,
+          "pixel_f1": 0.5624100835800006,
+          "mean_iou": 0.06155381970893058,
+          "cls_accuracy": 0.8257575757575758,
+          "cls_precision": 0.8257575757575758,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9045643153526971,
+          "cls_tp": 109,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "capsule",
+        "metrics": {
+          "auroc": 0.9680893498205027,
+          "aupro": 0.9357955138370644,
+          "pixel_auroc": 0.9900630251547569,
+          "pixel_f1": 0.5681671480189314,
+          "mean_iou": 0.061745990427469984,
+          "cls_accuracy": 0.8257575757575758,
+          "cls_precision": 0.8257575757575758,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9045643153526971,
+          "cls_tp": 109,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "capsule",
+        "metrics": {
+          "auroc": 0.9361786996410052,
+          "aupro": 0.891998563570625,
+          "pixel_auroc": 0.9898090667762975,
+          "pixel_f1": 0.5657031128506252,
+          "mean_iou": 0.05758023099135976,
+          "cls_accuracy": 0.8257575757575758,
+          "cls_precision": 0.8257575757575758,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9045643153526971,
+          "cls_tp": 109,
+          "cls_fp": 23,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 209600
+      }
+    },
+    "metal_nut": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "metal_nut",
+        "metrics": {
+          "auroc": 0.9990224828934506,
+          "aupro": 0.8249689708514418,
+          "pixel_auroc": 0.9782780230369479,
+          "pixel_f1": 0.8506951427751726,
+          "mean_iou": 0.43836673011427246,
+          "cls_accuracy": 0.808695652173913,
+          "cls_precision": 0.808695652173913,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8942307692307693,
+          "cls_tp": 93,
+          "cls_fp": 22,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "metal_nut",
+        "metrics": {
+          "auroc": 0.9995112414467253,
+          "aupro": 0.8546670332018756,
+          "pixel_auroc": 0.975044908151294,
+          "pixel_f1": 0.8377388138811867,
+          "mean_iou": 0.4405642352487984,
+          "cls_accuracy": 0.8173913043478261,
+          "cls_precision": 0.8157894736842105,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8985507246376812,
+          "cls_tp": 93,
+          "cls_fp": 21,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "metal_nut",
+        "metrics": {
+          "auroc": 0.9960899315738025,
+          "aupro": 0.8450594606070855,
+          "pixel_auroc": 0.9797886518571828,
+          "pixel_f1": 0.8559272084469055,
+          "mean_iou": 0.46861687539646535,
+          "cls_accuracy": 0.8173913043478261,
+          "cls_precision": 0.8157894736842105,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8985507246376812,
+          "cls_tp": 93,
+          "cls_fp": 21,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "metal_nut",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.8285667344391061,
+          "pixel_auroc": 0.982503759412864,
+          "pixel_f1": 0.8721638606772474,
+          "mean_iou": 0.4698489835524544,
+          "cls_accuracy": 0.8173913043478261,
+          "cls_precision": 0.8157894736842105,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8985507246376812,
+          "cls_tp": 93,
+          "cls_fp": 21,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "metal_nut",
+        "metrics": {
+          "auroc": 0.9980449657869013,
+          "aupro": 0.8012031091354681,
+          "pixel_auroc": 0.7952540349712034,
+          "pixel_f1": 0.42577201060205383,
+          "mean_iou": 0.41404097168166204,
+          "cls_accuracy": 0.808695652173913,
+          "cls_precision": 0.808695652173913,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8942307692307693,
+          "cls_tp": 93,
+          "cls_fp": 22,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 182400
+      }
+    },
+    "toothbrush": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "toothbrush",
+        "metrics": {
+          "auroc": 0.9916666666666666,
+          "aupro": 0.9036480405085812,
+          "pixel_auroc": 0.9877683908929134,
+          "pixel_f1": 0.7557307044732662,
+          "mean_iou": 0.12658744727873122,
+          "cls_accuracy": 0.7142857142857143,
+          "cls_precision": 0.7142857142857143,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8333333333333334,
+          "cls_tp": 30,
+          "cls_fp": 12,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "toothbrush",
+        "metrics": {
+          "auroc": 0.9611111111111111,
+          "aupro": 0.8824659430771888,
+          "pixel_auroc": 0.9876747360698567,
+          "pixel_f1": 0.7516660736043366,
+          "mean_iou": 0.12805425782213659,
+          "cls_accuracy": 0.7142857142857143,
+          "cls_precision": 0.7142857142857143,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8333333333333334,
+          "cls_tp": 30,
+          "cls_fp": 12,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "toothbrush",
+        "metrics": {
+          "auroc": 0.9916666666666666,
+          "aupro": 0.8881640634840371,
+          "pixel_auroc": 0.9874265689420846,
+          "pixel_f1": 0.7511556039126668,
+          "mean_iou": 0.12583915991279146,
+          "cls_accuracy": 0.7142857142857143,
+          "cls_precision": 0.7142857142857143,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8333333333333334,
+          "cls_tp": 30,
+          "cls_fp": 12,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "toothbrush",
+        "metrics": {
+          "auroc": 0.9916666666666666,
+          "aupro": 0.8860200380739427,
+          "pixel_auroc": 0.9876269152047036,
+          "pixel_f1": 0.7430894828738986,
+          "mean_iou": 0.1281493362948701,
+          "cls_accuracy": 0.7142857142857143,
+          "cls_precision": 0.7142857142857143,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8333333333333334,
+          "cls_tp": 30,
+          "cls_fp": 12,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "toothbrush",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9378254251801893,
+          "pixel_auroc": 0.9887087984882206,
+          "pixel_f1": 0.76979506216024,
+          "mean_iou": 0.1222485168534148,
+          "cls_accuracy": 0.7142857142857143,
+          "cls_precision": 0.7142857142857143,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8333333333333334,
+          "cls_tp": 30,
+          "cls_fp": 12,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 65600
+      }
+    },
+    "carpet": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "carpet",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9202928933964127,
+          "pixel_auroc": 0.9912701802307381,
+          "pixel_f1": 0.7310754584024967,
+          "mean_iou": 0.10235755745218787,
+          "cls_accuracy": 0.7863247863247863,
+          "cls_precision": 0.7857142857142857,
+          "cls_recall": 0.9887640449438202,
+          "cls_f1": 0.8756218905472637,
+          "cls_tp": 88,
+          "cls_fp": 24,
+          "cls_fn": 1,
+          "cls_tn": 4
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "carpet",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.8326194029391104,
+          "pixel_auroc": 0.9915815023062479,
+          "pixel_f1": 0.7320865105139558,
+          "mean_iou": 0.10154585187373569,
+          "cls_accuracy": 0.7777777777777778,
+          "cls_precision": 0.7837837837837838,
+          "cls_recall": 0.9775280898876404,
+          "cls_f1": 0.87,
+          "cls_tp": 87,
+          "cls_fp": 24,
+          "cls_fn": 2,
+          "cls_tn": 4
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "carpet",
+        "metrics": {
+          "auroc": 0.9995987158908507,
+          "aupro": 0.8477647753425676,
+          "pixel_auroc": 0.9915803540525164,
+          "pixel_f1": 0.7333759568733916,
+          "mean_iou": 0.10514935986484189,
+          "cls_accuracy": 0.8376068376068376,
+          "cls_precision": 0.8240740740740741,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9035532994923858,
+          "cls_tp": 89,
+          "cls_fp": 19,
+          "cls_fn": 0,
+          "cls_tn": 9
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "carpet",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.8341009619830083,
+          "pixel_auroc": 0.9916853636230568,
+          "pixel_f1": 0.7324753486875079,
+          "mean_iou": 0.10658971442401695,
+          "cls_accuracy": 0.8376068376068376,
+          "cls_precision": 0.8240740740740741,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9035532994923858,
+          "cls_tp": 89,
+          "cls_fp": 19,
+          "cls_fn": 0,
+          "cls_tn": 9
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "carpet",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9092381354975345,
+          "pixel_auroc": 0.9938332339652882,
+          "pixel_f1": 0.7369517965668166,
+          "mean_iou": 0.09378837880050471,
+          "cls_accuracy": 0.7777777777777778,
+          "cls_precision": 0.7739130434782608,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8725490196078431,
+          "cls_tp": 89,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 2
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 185600
+      }
+    },
+    "wood": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "wood",
+        "metrics": {
+          "auroc": 0.9798245614035088,
+          "aupro": 0.7380033884308562,
+          "pixel_auroc": 0.8079215366463978,
+          "pixel_f1": 0.531558011165485,
+          "mean_iou": 0.10517785124600468,
+          "cls_accuracy": 0.7468354430379747,
+          "cls_precision": 0.7631578947368421,
+          "cls_recall": 0.9666666666666667,
+          "cls_f1": 0.8529411764705882,
+          "cls_tp": 58,
+          "cls_fp": 18,
+          "cls_fn": 2,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "wood",
+        "metrics": {
+          "auroc": 0.9833333333333334,
+          "aupro": 0.7444478041745652,
+          "pixel_auroc": 0.8033785348519316,
+          "pixel_f1": 0.5301541375807645,
+          "mean_iou": 0.1025659472101181,
+          "cls_accuracy": 0.7721518987341772,
+          "cls_precision": 0.7763157894736842,
+          "cls_recall": 0.9833333333333333,
+          "cls_f1": 0.8676470588235294,
+          "cls_tp": 59,
+          "cls_fp": 17,
+          "cls_fn": 1,
+          "cls_tn": 2
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "wood",
+        "metrics": {
+          "auroc": 0.9815789473684211,
+          "aupro": 0.7058750039739748,
+          "pixel_auroc": 0.8032966060119502,
+          "pixel_f1": 0.528932260750255,
+          "mean_iou": 0.10526733197497933,
+          "cls_accuracy": 0.7721518987341772,
+          "cls_precision": 0.7692307692307693,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8695652173913043,
+          "cls_tp": 60,
+          "cls_fp": 18,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "wood",
+        "metrics": {
+          "auroc": 0.9833333333333334,
+          "aupro": 0.7415113622223515,
+          "pixel_auroc": 0.8014351785279203,
+          "pixel_f1": 0.5282981561055696,
+          "mean_iou": 0.10696269907310138,
+          "cls_accuracy": 0.7721518987341772,
+          "cls_precision": 0.7692307692307693,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8695652173913043,
+          "cls_tp": 60,
+          "cls_fp": 18,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "wood",
+        "metrics": {
+          "auroc": 0.9912280701754386,
+          "aupro": 0.8074138033726143,
+          "pixel_auroc": 0.832904819097413,
+          "pixel_f1": 0.5572336432320434,
+          "mean_iou": 0.09136472745811673,
+          "cls_accuracy": 0.7341772151898734,
+          "cls_precision": 0.7746478873239436,
+          "cls_recall": 0.9166666666666666,
+          "cls_f1": 0.8396946564885496,
+          "cls_tp": 55,
+          "cls_fp": 16,
+          "cls_fn": 5,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 124800
+      }
+    },
+    "zipper": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "zipper",
+        "metrics": {
+          "auroc": 0.9217436974789915,
+          "aupro": 0.7477776974729077,
+          "pixel_auroc": 0.9774389071305087,
+          "pixel_f1": 0.5802543038320039,
+          "mean_iou": 0.08970918613767202,
+          "cls_accuracy": 0.8013245033112583,
+          "cls_precision": 0.7986577181208053,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8880597014925373,
+          "cls_tp": 119,
+          "cls_fp": 30,
+          "cls_fn": 0,
+          "cls_tn": 2
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "zipper",
+        "metrics": {
+          "auroc": 0.9852941176470589,
+          "aupro": 0.8561324142155934,
+          "pixel_auroc": 0.9803646322976878,
+          "pixel_f1": 0.6114665999383837,
+          "mean_iou": 0.09086425752305456,
+          "cls_accuracy": 0.8278145695364238,
+          "cls_precision": 0.8206896551724138,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9015151515151515,
+          "cls_tp": 119,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 6
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "zipper",
+        "metrics": {
+          "auroc": 0.9939600840336135,
+          "aupro": 0.816554261754387,
+          "pixel_auroc": 0.9804786395077388,
+          "pixel_f1": 0.6132680342560806,
+          "mean_iou": 0.09087892919983559,
+          "cls_accuracy": 0.8344370860927153,
+          "cls_precision": 0.8263888888888888,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9049429657794676,
+          "cls_tp": 119,
+          "cls_fp": 25,
+          "cls_fn": 0,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "zipper",
+        "metrics": {
+          "auroc": 0.9574579831932772,
+          "aupro": 0.8606203977846993,
+          "pixel_auroc": 0.9794379714406191,
+          "pixel_f1": 0.600835931361858,
+          "mean_iou": 0.09269393175654955,
+          "cls_accuracy": 0.8145695364238411,
+          "cls_precision": 0.8226950354609929,
+          "cls_recall": 0.9747899159663865,
+          "cls_f1": 0.8923076923076924,
+          "cls_tp": 116,
+          "cls_fp": 25,
+          "cls_fn": 3,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "zipper",
+        "metrics": {
+          "auroc": 0.9088760504201681,
+          "aupro": 0.7019593859193722,
+          "pixel_auroc": 0.9798121079274158,
+          "pixel_f1": 0.5719130478893854,
+          "mean_iou": 0.0887380339224369,
+          "cls_accuracy": 0.8013245033112583,
+          "cls_precision": 0.8027210884353742,
+          "cls_recall": 0.9915966386554622,
+          "cls_f1": 0.8872180451127819,
+          "cls_tp": 118,
+          "cls_fp": 29,
+          "cls_fn": 1,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 240000
+      }
+    },
+    "cable": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "cable",
+        "metrics": {
+          "auroc": 0.9372188905547225,
+          "aupro": 0.8075086939018385,
+          "pixel_auroc": 0.9518730793503051,
+          "pixel_f1": 0.6960741774250875,
+          "mean_iou": 0.16514431439048477,
+          "cls_accuracy": 0.6266666666666667,
+          "cls_precision": 0.6216216216216216,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7666666666666667,
+          "cls_tp": 92,
+          "cls_fp": 56,
+          "cls_fn": 0,
+          "cls_tn": 2
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "cable",
+        "metrics": {
+          "auroc": 0.9482758620689655,
+          "aupro": 0.8025514842049213,
+          "pixel_auroc": 0.957773973448637,
+          "pixel_f1": 0.6904200453860264,
+          "mean_iou": 0.17169864821426098,
+          "cls_accuracy": 0.6133333333333333,
+          "cls_precision": 0.6133333333333333,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7603305785123967,
+          "cls_tp": 92,
+          "cls_fp": 58,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "cable",
+        "metrics": {
+          "auroc": 0.9462143928035982,
+          "aupro": 0.7775214402576127,
+          "pixel_auroc": 0.9596605955990369,
+          "pixel_f1": 0.6925706149996028,
+          "mean_iou": 0.17382065392732612,
+          "cls_accuracy": 0.6133333333333333,
+          "cls_precision": 0.6133333333333333,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7603305785123967,
+          "cls_tp": 92,
+          "cls_fp": 58,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "cable",
+        "metrics": {
+          "auroc": 0.9540854572713643,
+          "aupro": 0.8468345662315554,
+          "pixel_auroc": 0.9609422690288669,
+          "pixel_f1": 0.6905520731334549,
+          "mean_iou": 0.17798083623130043,
+          "cls_accuracy": 0.62,
+          "cls_precision": 0.6174496644295302,
+          "cls_recall": 1.0,
+          "cls_f1": 0.7634854771784232,
+          "cls_tp": 92,
+          "cls_fp": 57,
+          "cls_fn": 0,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "cable",
+        "metrics": {
+          "auroc": 0.948088455772114,
+          "aupro": 0.8095210733757894,
+          "pixel_auroc": 0.9670835731968309,
+          "pixel_f1": 0.6303985105884011,
+          "mean_iou": 0.1536224897497098,
+          "cls_accuracy": 0.6066666666666667,
+          "cls_precision": 0.610738255033557,
+          "cls_recall": 0.9891304347826086,
+          "cls_f1": 0.7551867219917012,
+          "cls_tp": 91,
+          "cls_fp": 58,
+          "cls_fn": 1,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 238400
+      }
+    },
+    "transistor": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "transistor",
+        "metrics": {
+          "auroc": 0.83875,
+          "aupro": 0.42515686078111903,
+          "pixel_auroc": 0.675849577878869,
+          "pixel_f1": 0.4150959662687198,
+          "mean_iou": 0.21502586222370298,
+          "cls_accuracy": 0.4,
+          "cls_precision": 0.3979591836734694,
+          "cls_recall": 0.975,
+          "cls_f1": 0.5652173913043478,
+          "cls_tp": 39,
+          "cls_fp": 59,
+          "cls_fn": 1,
+          "cls_tn": 1
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "transistor",
+        "metrics": {
+          "auroc": 0.8383333333333334,
+          "aupro": 0.44880328086607046,
+          "pixel_auroc": 0.678829104523428,
+          "pixel_f1": 0.42215961860000534,
+          "mean_iou": 0.22100736661772866,
+          "cls_accuracy": 0.52,
+          "cls_precision": 0.44871794871794873,
+          "cls_recall": 0.875,
+          "cls_f1": 0.5932203389830508,
+          "cls_tp": 35,
+          "cls_fp": 43,
+          "cls_fn": 5,
+          "cls_tn": 17
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "transistor",
+        "metrics": {
+          "auroc": 0.8583333333333333,
+          "aupro": 0.433466365852054,
+          "pixel_auroc": 0.6801969900231375,
+          "pixel_f1": 0.42513742681562733,
+          "mean_iou": 0.21503147177022325,
+          "cls_accuracy": 0.59,
+          "cls_precision": 0.4927536231884058,
+          "cls_recall": 0.85,
+          "cls_f1": 0.6238532110091743,
+          "cls_tp": 34,
+          "cls_fp": 35,
+          "cls_fn": 6,
+          "cls_tn": 25
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "transistor",
+        "metrics": {
+          "auroc": 0.8662500000000001,
+          "aupro": 0.4470911408694392,
+          "pixel_auroc": 0.6783790573106019,
+          "pixel_f1": 0.4217576229103928,
+          "mean_iou": 0.21532631975334793,
+          "cls_accuracy": 0.64,
+          "cls_precision": 0.53125,
+          "cls_recall": 0.85,
+          "cls_f1": 0.6538461538461539,
+          "cls_tp": 34,
+          "cls_fp": 30,
+          "cls_fn": 6,
+          "cls_tn": 30
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "transistor",
+        "metrics": {
+          "auroc": 0.8754166666666667,
+          "aupro": 0.4657480511743639,
+          "pixel_auroc": 0.6960341266862452,
+          "pixel_f1": 0.5279999383093762,
+          "mean_iou": 0.16856221774538774,
+          "cls_accuracy": 0.46,
+          "cls_precision": 0.4146341463414634,
+          "cls_recall": 0.85,
+          "cls_f1": 0.5573770491803278,
+          "cls_tp": 34,
+          "cls_fp": 48,
+          "cls_fn": 6,
+          "cls_tn": 12
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 158400
+      }
+    },
+    "bottle": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "bottle",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.8527846781439476,
+          "pixel_auroc": 0.988336856173477,
+          "pixel_f1": 0.8290522801651964,
+          "mean_iou": 0.33049037213482607,
+          "cls_accuracy": 0.8192771084337349,
+          "cls_precision": 0.8076923076923077,
+          "cls_recall": 1.0,
+          "cls_f1": 0.8936170212765957,
+          "cls_tp": 63,
+          "cls_fp": 15,
+          "cls_fn": 0,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "bottle",
+        "metrics": {
+          "auroc": 0.9992063492063492,
+          "aupro": 0.8258577674639882,
+          "pixel_auroc": 0.987866147491909,
+          "pixel_f1": 0.8239284595865617,
+          "mean_iou": 0.32993671549970216,
+          "cls_accuracy": 0.8433734939759037,
+          "cls_precision": 0.8289473684210527,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9064748201438849,
+          "cls_tp": 63,
+          "cls_fp": 13,
+          "cls_fn": 0,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "bottle",
+        "metrics": {
+          "auroc": 0.9992063492063492,
+          "aupro": 0.8904030887780081,
+          "pixel_auroc": 0.9878873942948104,
+          "pixel_f1": 0.8240884237064566,
+          "mean_iou": 0.32865604888513295,
+          "cls_accuracy": 0.8313253012048193,
+          "cls_precision": 0.8266666666666667,
+          "cls_recall": 0.9841269841269841,
+          "cls_f1": 0.8985507246376812,
+          "cls_tp": 62,
+          "cls_fp": 13,
+          "cls_fn": 1,
+          "cls_tn": 7
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "bottle",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9274553804000067,
+          "pixel_auroc": 0.9888246798339211,
+          "pixel_f1": 0.8330497717877249,
+          "mean_iou": 0.33692959912002923,
+          "cls_accuracy": 0.8674698795180723,
+          "cls_precision": 0.8513513513513513,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9197080291970803,
+          "cls_tp": 63,
+          "cls_fp": 11,
+          "cls_fn": 0,
+          "cls_tn": 9
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "bottle",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.9188006988287591,
+          "pixel_auroc": 0.9871002325868712,
+          "pixel_f1": 0.8283866325535763,
+          "mean_iou": 0.2850003059253762,
+          "cls_accuracy": 0.7108433734939759,
+          "cls_precision": 0.7468354430379747,
+          "cls_recall": 0.9365079365079365,
+          "cls_f1": 0.8309859154929577,
+          "cls_tp": 59,
+          "cls_fp": 20,
+          "cls_fn": 4,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 131200
+      }
+    },
+    "tile": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "tile",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.6884270966656579,
+          "pixel_auroc": 0.7383295567222026,
+          "pixel_f1": 0.5776026496660355,
+          "mean_iou": 0.22574721244383422,
+          "cls_accuracy": 0.7264957264957265,
+          "cls_precision": 0.7321428571428571,
+          "cls_recall": 0.9761904761904762,
+          "cls_f1": 0.8367346938775511,
+          "cls_tp": 82,
+          "cls_fp": 30,
+          "cls_fn": 2,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "tile",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.7238883398058935,
+          "pixel_auroc": 0.7371992053353303,
+          "pixel_f1": 0.5782438941367933,
+          "mean_iou": 0.2268484450382157,
+          "cls_accuracy": 0.7521367521367521,
+          "cls_precision": 0.7477477477477478,
+          "cls_recall": 0.9880952380952381,
+          "cls_f1": 0.8512820512820513,
+          "cls_tp": 83,
+          "cls_fp": 28,
+          "cls_fn": 1,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "tile",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.7087421837308756,
+          "pixel_auroc": 0.7369570128078748,
+          "pixel_f1": 0.5775787631757333,
+          "mean_iou": 0.22852106815138096,
+          "cls_accuracy": 0.7435897435897436,
+          "cls_precision": 0.7454545454545455,
+          "cls_recall": 0.9761904761904762,
+          "cls_f1": 0.845360824742268,
+          "cls_tp": 82,
+          "cls_fp": 28,
+          "cls_fn": 2,
+          "cls_tn": 5
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "tile",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.7125130318488978,
+          "pixel_auroc": 0.7368192791336472,
+          "pixel_f1": 0.5787140675349949,
+          "mean_iou": 0.2280864196009425,
+          "cls_accuracy": 0.7606837606837606,
+          "cls_precision": 0.7545454545454545,
+          "cls_recall": 0.9880952380952381,
+          "cls_f1": 0.8556701030927835,
+          "cls_tp": 83,
+          "cls_fp": 27,
+          "cls_fn": 1,
+          "cls_tn": 6
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "tile",
+        "metrics": {
+          "auroc": 1.0,
+          "aupro": 0.7052625595867407,
+          "pixel_auroc": 0.7561219436096505,
+          "pixel_f1": 0.5898164912961006,
+          "mean_iou": 0.21879699915919607,
+          "cls_accuracy": 0.717948717948718,
+          "cls_precision": 0.7297297297297297,
+          "cls_recall": 0.9642857142857143,
+          "cls_f1": 0.8307692307692308,
+          "cls_tp": 81,
+          "cls_fp": 30,
+          "cls_fn": 3,
+          "cls_tn": 3
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 185600
+      }
+    },
+    "pill": {
+      "1_shot": {
+        "method_name": "1_shot",
+        "object_name": "pill",
+        "metrics": {
+          "auroc": 0.9399890889252591,
+          "aupro": 0.8736589035485778,
+          "pixel_auroc": 0.9679376645669552,
+          "pixel_f1": 0.6279118816486997,
+          "mean_iou": 0.1265634225642849,
+          "cls_accuracy": 0.844311377245509,
+          "cls_precision": 0.844311377245509,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9155844155844156,
+          "cls_tp": 141,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 12800
+      },
+      "2_shot": {
+        "method_name": "2_shot",
+        "object_name": "pill",
+        "metrics": {
+          "auroc": 0.9470812875068195,
+          "aupro": 0.8396465866855665,
+          "pixel_auroc": 0.9712247982622594,
+          "pixel_f1": 0.6379426594999404,
+          "mean_iou": 0.12686951691874016,
+          "cls_accuracy": 0.844311377245509,
+          "cls_precision": 0.844311377245509,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9155844155844156,
+          "cls_tp": 141,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 25600
+      },
+      "4_shot": {
+        "method_name": "4_shot",
+        "object_name": "pill",
+        "metrics": {
+          "auroc": 0.939443535188216,
+          "aupro": 0.8679140582624164,
+          "pixel_auroc": 0.9725546094372639,
+          "pixel_f1": 0.6440968846789191,
+          "mean_iou": 0.12864022708928102,
+          "cls_accuracy": 0.844311377245509,
+          "cls_precision": 0.844311377245509,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9155844155844156,
+          "cls_tp": 141,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 51200
+      },
+      "8_shot": {
+        "method_name": "8_shot",
+        "object_name": "pill",
+        "metrics": {
+          "auroc": 0.9541734860883797,
+          "aupro": 0.9275425969199141,
+          "pixel_auroc": 0.9753920808073795,
+          "pixel_f1": 0.6578366014128892,
+          "mean_iou": 0.12831575136666187,
+          "cls_accuracy": 0.844311377245509,
+          "cls_precision": 0.844311377245509,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9155844155844156,
+          "cls_tp": 141,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_rotation": true,
+          "use_masking": true,
+          "k_neighbors": 3,
+          "masking_method": "pca",
+          "segmentation_method": "gmm"
+        },
+        "num_features": 102400
+      },
+      "zero_shot": {
+        "method_name": "zero_shot",
+        "object_name": "pill",
+        "metrics": {
+          "auroc": 0.9228041462084013,
+          "aupro": 0.893137802738832,
+          "pixel_auroc": 0.9709353542604588,
+          "pixel_f1": 0.6260108221312063,
+          "mean_iou": 0.12251196210110946,
+          "cls_accuracy": 0.844311377245509,
+          "cls_precision": 0.844311377245509,
+          "cls_recall": 1.0,
+          "cls_f1": 0.9155844155844156,
+          "cls_tp": 141,
+          "cls_fp": 26,
+          "cls_fn": 0,
+          "cls_tn": 0
+        },
+        "config": {
+          "use_masking": true,
+          "segmentation_method": "gmm"
+        },
+        "num_features": 265600
+      }
+    }
+  }
+}

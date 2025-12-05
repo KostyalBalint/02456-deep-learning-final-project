@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "capsule",
+  "metrics": {
+    "auroc": 0.9341842840047866,
+    "aupro": 0.8456963948959866,
+    "pixel_auroc": 0.9884707844261559,
+    "pixel_f1": 0.5506828495563381,
+    "mean_iou": 0.05848210144874319,
+    "cls_accuracy": 0.8257575757575758,
+    "cls_precision": 0.8257575757575758,
+    "cls_recall": 1.0,
+    "cls_f1": 0.9045643153526971,
+    "cls_tp": 109,
+    "cls_fp": 23,
+    "cls_fn": 0,
+    "cls_tn": 0
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

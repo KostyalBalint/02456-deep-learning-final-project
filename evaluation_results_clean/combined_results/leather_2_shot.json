@@ -1,0 +1,27 @@
+{
+  "method_name": "2_shot",
+  "object_name": "leather",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.9075108991169806,
+    "pixel_auroc": 0.9861888644143814,
+    "pixel_f1": 0.4344417014233625,
+    "mean_iou": 0.03163011672977728,
+    "cls_accuracy": 0.7983870967741935,
+    "cls_precision": 0.7863247863247863,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8803827751196173,
+    "cls_tp": 92,
+    "cls_fp": 25,
+    "cls_fn": 0,
+    "cls_tn": 7
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 25600
+}

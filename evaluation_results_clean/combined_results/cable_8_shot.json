@@ -1,0 +1,27 @@
+{
+  "method_name": "8_shot",
+  "object_name": "cable",
+  "metrics": {
+    "auroc": 0.9540854572713643,
+    "aupro": 0.8468345662315554,
+    "pixel_auroc": 0.9609422690288669,
+    "pixel_f1": 0.6905520731334549,
+    "mean_iou": 0.17798083623130043,
+    "cls_accuracy": 0.62,
+    "cls_precision": 0.6174496644295302,
+    "cls_recall": 1.0,
+    "cls_f1": 0.7634854771784232,
+    "cls_tp": 92,
+    "cls_fp": 57,
+    "cls_fn": 0,
+    "cls_tn": 1
+  },
+  "config": {
+    "use_rotation": true,
+    "use_masking": true,
+    "k_neighbors": 3,
+    "masking_method": "pca",
+    "segmentation_method": "gmm"
+  },
+  "num_features": 102400
+}

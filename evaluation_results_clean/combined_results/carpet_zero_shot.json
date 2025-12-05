@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "carpet",
+  "metrics": {
+    "auroc": 1.0,
+    "aupro": 0.9092381354975345,
+    "pixel_auroc": 0.9938332339652882,
+    "pixel_f1": 0.7369517965668166,
+    "mean_iou": 0.09378837880050471,
+    "cls_accuracy": 0.7777777777777778,
+    "cls_precision": 0.7739130434782608,
+    "cls_recall": 1.0,
+    "cls_f1": 0.8725490196078431,
+    "cls_tp": 89,
+    "cls_fp": 26,
+    "cls_fn": 0,
+    "cls_tn": 2
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 185600
+}

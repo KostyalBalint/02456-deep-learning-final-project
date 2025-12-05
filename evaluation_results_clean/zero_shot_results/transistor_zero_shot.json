@@ -1,0 +1,24 @@
+{
+  "method_name": "zero_shot",
+  "object_name": "transistor",
+  "metrics": {
+    "auroc": 0.8754166666666667,
+    "aupro": 0.4657480511743639,
+    "pixel_auroc": 0.6960341266862452,
+    "pixel_f1": 0.5279999383093762,
+    "mean_iou": 0.16856221774538774,
+    "cls_accuracy": 0.46,
+    "cls_precision": 0.4146341463414634,
+    "cls_recall": 0.85,
+    "cls_f1": 0.5573770491803278,
+    "cls_tp": 34,
+    "cls_fp": 48,
+    "cls_fn": 6,
+    "cls_tn": 12
+  },
+  "config": {
+    "use_masking": true,
+    "segmentation_method": "gmm"
+  },
+  "num_features": 158400
+}
